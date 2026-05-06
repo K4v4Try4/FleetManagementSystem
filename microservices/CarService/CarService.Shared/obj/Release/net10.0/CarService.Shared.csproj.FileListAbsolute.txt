@@ -1,0 +1,11 @@
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\bin\Release\net10.0\CarService.Shared.deps.json
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\bin\Release\net10.0\CarService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\bin\Release\net10.0\CarService.Shared.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\CarService.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\CarService.Shared.AssemblyInfoInputs.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\CarService.Shared.AssemblyInfo.cs
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\CarService.Shared.csproj.CoreCompileInputs.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\CarService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\refint\CarService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\CarService.Shared.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Release\net10.0\ref\CarService.Shared.dll

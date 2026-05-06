@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CarService.ClientHttp</id>
+    <version>1.0.0</version>
+    <authors>K4v4Try4</authors>
+    <description>Package Description</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="CarService.Shared" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.ClientHttp\bin\Release\net10.0\CarService.ClientHttp.dll" target="lib\net10.0\CarService.ClientHttp.dll" />
+  </files>
+</package>

@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CarService.Business/CarService.Business.csproj" Id="0bce0af2-6136-4ae6-b645-d3b981b4123a" />
+  <Project Path="CarService.ClientHttp/CarService.ClientHttp.csproj" Id="e049c623-052e-45e0-86bc-27b8d5367234" />
+  <Project Path="CarService.Repository/CarService.Repository.csproj" Id="bde6fb01-1a09-4e8a-a46b-3d08bc92e836" />
+  <Project Path="CarService.Shared/CarService.Shared.csproj" Id="0fce5e11-949e-444e-aacf-4c78b1a5ad1e" />
+  <Project Path="CarService.WebApi/CarService.WebApi.csproj" Id="cdc40e20-d403-46cc-8e1a-9f5860a6dbff" />
+</Solution>

@@ -1,0 +1,59 @@
+📁 C:\Users\cavel\Desktop\FleetManagementSystem
+├── 📄 FleetManagementSystem_2026-05-05_22-34-10.txt
+├── 📄 README.md
+├── 📄 appunti.txt
+├── 📁 microservices
+│   ├── 📁 CarService
+│   │   ├── 📄 .dockerignore
+│   │   ├── 📁 CarService.Business
+│   │   │   ├── 📄 CarService.Business.csproj
+│   │   │   ├── 📁 Interfaces
+│   │   │   │   └── 📄 ICarBusinessService.cs
+│   │   │   ├── 📁 Kafka
+│   │   │   │   └── 📄 TripCompletedConsumer.cs
+│   │   │   └── 📁 Services
+│   │   │       └── 📄 CarBusinessService.cs
+│   │   ├── 📁 CarService.ClientHttp
+│   │   │   ├── 📄 CarService.ClientHttp.csproj
+│   │   │   ├── 📁 Implementations
+│   │   │   │   └── 📄 CarClient.cs
+│   │   │   └── 📁 Interfaces
+│   │   │       └── 📄 ICarClient.cs
+│   │   ├── 📁 CarService.Repository
+│   │   │   ├── 📄 CarService.Repository.csproj
+│   │   │   ├── 📁 Implementations
+│   │   │   │   └── 📄 CarRepository.cs
+│   │   │   ├── 📁 Interfaces
+│   │   │   │   └── 📄 ICarRepository.cs
+│   │   │   ├── 📁 Migrations
+│   │   │   │   ├── 📄 20260505202453_InitialCreate.Designer.cs
+│   │   │   │   ├── 📄 20260505202453_InitialCreate.cs
+│   │   │   │   └── 📄 CarDbContextModelSnapshot.cs
+│   │   │   └── 📁 Persistence
+│   │   │       └── 📄 CarDbContext.cs
+│   │   ├── 📁 CarService.Shared
+│   │   │   ├── 📄 CarService.Shared.csproj
+│   │   │   ├── 📁 DTOs
+│   │   │   │   ├── 📄 CarDto.cs
+│   │   │   │   └── 📄 CreateCarDto.cs
+│   │   │   ├── 📁 Entities
+│   │   │   │   └── 📄 Car.cs
+│   │   │   ├── 📁 Enums
+│   │   │   │   └── 📄 CarStatus.cs
+│   │   │   └── 📁 Events
+│   │   │       └── 📄 TripCompletedEvent.cs
+│   │   ├── 📁 CarService.WebApi
+│   │   │   ├── 📄 CarService.WebApi.csproj
+│   │   │   ├── 📄 CarService.WebApi.csproj.user
+│   │   │   ├── 📄 CarService.WebApi.http
+│   │   │   ├── 📁 Controllers
+│   │   │   │   └── 📄 CarsController.cs
+│   │   │   ├── 📄 Dockerfile
+│   │   │   ├── 📄 Program.cs
+│   │   │   ├── 📁 Properties
+│   │   │   │   └── 📄 launchSettings.json
+│   │   │   ├── 📄 appsettings.Development.json
+│   │   │   └── 📄 appsettings.json
+│   │   └── 📄 CarService.slnx
+│   └── 📄 docker-compose.yml
+└── 📁 nuget-packages

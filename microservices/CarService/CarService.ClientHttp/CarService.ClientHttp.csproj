@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>  
+    <Version>1.0.0</Version>
+    <Authors>K4v4Try4</Authors>
+    <Company>FleetManagementSystem</Company>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarService.Shared\CarService.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

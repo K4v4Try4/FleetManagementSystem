@@ -1,0 +1,68 @@
+docker:
+	- docker-compose up: Legge il file YAML e avvia tutti i servizi definiti
+	- docker-compose up --build: Forza Docker a ricostruire l'immagine del tuo microservizio partendo dal Dockerfile. È fondamentale usarlo ogni volta che modifichi il codice C#
+	- docker-compose up -d: Avvia i container in "background". Questo ti permette di continuare a usare il terminale mentre i servizi girano silenziosamente
+	- docker-compose down: Spegne tutti i container e rimuove la rete virtuale creata
+	- docker-compose down -v: Cancella i volumi (i dati salvati)
+	- docker ps: Ti mostra la lista di tutti i container attivi, il loro ID, l'immagine che usano e, soprattutto, lo Status
+	- docker-compose stop: spegnimento
+	- docker-compose up -d --build: avvio "migliore"
+	- Il "Fantasma" della Cache di Docker: 
+		- A volte Docker usa versioni vecchie delle immagini se non "sente" cambiamenti drastici
+		- pulizia profonda:
+			- docker-compose down
+			- docker-compose up -d --build --force-recreate
+	- strettamente consigliato:
+		- docker compose down -v
+		- docker compose up --build --force-recreate
+
+url:
+	CarService: http://localhost:5000/swagger/index.html
+
+alcuni chiarimenti:
+	- appsettings.Development.json: Il tuo "Laboratorio" con log e debug
+	- appsettings.json: La base per Docker (la configurazione "reale")
+	- docker-compose e dockerfile:
+		- dockerfile è il "manuale di istruzioni"	
+		- docker-compose è il regista
+	- Il codice HTTP 201 Created indica che la richiesta è andata a buon fine e il server ha creato una nuova risorsa
+	- Il codice HTTP 204, noto come "No Content" (Nessun contenuto), indica che il server ha elaborato correttamente la richiesta, ma non deve restituire alcun corpo di risposta
+
+migliorare:
+	- aggiungere il caso di error 404 
+
+domande:
+	- {
+		%3|1778058830.661|ERROR|rdkafka#consumer-1| [thrd:kafka:9092/bootstrap]: 1/1 brokers are down
+		%3|1778058835.688|FAIL|rdkafka#consumer-1| [thrd:kafka:9092/bootstrap]: kafka:9092/bootstrap: Failed to resolve 'kafka:9092': Name or service not known (after 3987ms in state CONNECT, 6 identical error(s) suppressed)
+	
+		perché succede? il servizio di kafka non viene avviato?
+	} 
+
+	si deve correggere il docker compose in  {
+		kafka:
+			image: confluentinc/cp-kafka:7.6.1  # <-- Cambia 'latest' con '7.6.1'
+			container_name: kafka
+			depends_on:
+			- zookeeper
+			ports:
+			- "9092:9092"
+			environment:
+			KAFKA_BROKER_ID: 1
+			KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+			# Aggiungiamo anche KAFKA_LISTENERS per sicurezza
+			KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+			KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+			KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+			KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+			KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+			networks:
+			- fleet-network
+	}
+
+	solo che dopo da errori del tipo:
+		- manca CORS
+		- il servizio deve essere eseguito con HTTP e HTTPS
+		- etc...
+
+	ma se lo modifico dopo non funziona più

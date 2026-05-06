@@ -1,0 +1,95 @@
+[
+  {
+    "ContainingType": "CarService.WebApi.Controllers.CarsController",
+    "Method": "GetCars",
+    "RelativePath": "api/cars",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CarService.Shared.DTOs.CarDto, CarService.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CarService.WebApi.Controllers.CarsController",
+    "Method": "CreateCar",
+    "RelativePath": "api/cars",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CarService.Shared.DTOs.CreateCarDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int16",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CarService.WebApi.Controllers.CarsController",
+    "Method": "GetCar",
+    "RelativePath": "api/cars/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int16",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CarService.Shared.DTOs.CarDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CarService.WebApi.Controllers.CarsController",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/cars/{id}/status",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int16",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "CarService.Shared.Enums.CarStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
