@@ -50,10 +50,10 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/employee-service:latest
 
       # --- BOOKING SERVICE ---
-      - name: Build and push Booking Service
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./microservices/BookingService/BookingService.WebApi/Dockerfile 
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/booking-service:latest
+      # - name: Build and push Booking Service
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     file: ./microservices/BookingService/BookingService.WebApi/Dockerfile 
+      #     push: true
+      #     tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/booking-service:latest
