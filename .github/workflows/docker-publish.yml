@@ -17,7 +17,7 @@ jobs:
     strategy:
       # Qui elenchi i nomi delle tue cartelle che contengono un Dockerfile
       matrix:
-        service: [CarService, EmployeeService] 
+        service: [microservices/CarService, microservices/EmployeeService] 
 
     steps:
       - name: Checkout repository
