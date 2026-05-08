@@ -18,6 +18,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Questo step trasforma il nome del repo in minuscolo
+      - name: Lowercase Repo Name
+        run: |
+          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
         with:
@@ -30,24 +35,25 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./microservices/CarService/CarService.WebApi/Dockerfile
+          file: ./microservices/CarService/CarService.WebApi/Dockerfile 
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}/car-service:latest
+          # Usiamo ${{ env.REPO_LOWER }} invece di github.repository
+          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/car-service:latest
 
       # --- EMPLOYEE SERVICE ---
       - name: Build and push Employee Service
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./microservices/EmployeeService/EmployeeService.WebApi/Dockerfile
+          file: ./microservices/EmployeeService/EmployeeService.WebApi/Dockerfile 
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}/employee-service:latest
+          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/employee-service:latest
 
       # --- BOOKING SERVICE ---
       - name: Build and push Booking Service
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./microservices/BookingService/BookingService.WebApi/Dockerfile
+          file: ./microservices/BookingService/BookingService.WebApi/Dockerfile 
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}/booking-service:latest
+          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/booking-service:latest
