@@ -42,7 +42,7 @@ jobs:
         with:
           context: .
           # Punta dinamicamente al Dockerfile nella cartella del servizio
-          file: ./${{ matrix.service }}/Dockerfile 
+          file: ${{ matrix.service }}/Dockerfile 
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
