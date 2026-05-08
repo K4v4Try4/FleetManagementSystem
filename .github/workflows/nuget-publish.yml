@@ -1,0 +1,27 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    branches: [ main ] # Oppure "release"
+  workflow_dispatch: # Permette l'avvio manuale
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+
+      # Questo comando crea i pacchetti partendo dal codice che hai pushato
+      - name: Pack
+        run: dotnet pack --configuration Release --output ./nupkgs
+
+      # Questo comando li pubblica prendendoli dalla cartella appena creata sul server
+      - name: Publish
+        run: dotnet nuget push "./nupkgs/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate

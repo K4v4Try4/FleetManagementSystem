@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\EmployeeService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DB57D417-41FD-F600-577A-00C8D43CFE4D}|EmployeeService.Repository\\EmployeeService.Repository.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\employeeservice\\employeeservice.repository\\migrations\\20260508120030_initialcreateemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB57D417-41FD-F600-577A-00C8D43CFE4D}|EmployeeService.Repository\\EmployeeService.Repository.csproj|solutionrelative:employeeservice.repository\\migrations\\20260508120030_initialcreateemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CF09D92-08A0-93E6-57D5-F10153905453}|EmployeeService.WebApi\\EmployeeService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\employeeservice\\employeeservice.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CF09D92-08A0-93E6-57D5-F10153905453}|EmployeeService.WebApi\\EmployeeService.WebApi.csproj|solutionrelative:employeeservice.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260508120030_InitialCreateEmployee.cs",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\EmployeeService\\EmployeeService.Repository\\Migrations\\20260508120030_InitialCreateEmployee.cs",
+              "RelativeDocumentMoniker": "EmployeeService.Repository\\Migrations\\20260508120030_InitialCreateEmployee.cs",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\EmployeeService\\EmployeeService.Repository\\Migrations\\20260508120030_InitialCreateEmployee.cs",
+              "RelativeToolTip": "EmployeeService.Repository\\Migrations\\20260508120030_InitialCreateEmployee.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T13:00:29.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\EmployeeService\\EmployeeService.WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "EmployeeService.WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\EmployeeService\\EmployeeService.WebApi\\Program.cs",
+              "RelativeToolTip": "EmployeeService.WebApi\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T18:59:55.15Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

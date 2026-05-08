@@ -66,3 +66,10 @@ domande:
 		- etc...
 
 	ma se lo modifico dopo non funziona più
+
+
+
+token: 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
+
+
+dotnet nuget push "*.nupkg" --source "https://nuget.pkg.github.com/K4v4Try4/index.json" --api-key "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"

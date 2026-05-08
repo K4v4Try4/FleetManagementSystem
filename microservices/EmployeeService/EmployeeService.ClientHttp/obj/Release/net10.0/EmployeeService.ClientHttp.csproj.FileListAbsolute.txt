@@ -1,0 +1,16 @@
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\bin\Release\net10.0\EmployeeService.ClientHttp.deps.json
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\bin\Release\net10.0\EmployeeService.ClientHttp.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\bin\Release\net10.0\EmployeeService.ClientHttp.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\bin\Release\net10.0\EmployeeService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\bin\Release\net10.0\EmployeeService.Shared.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.csproj.AssemblyReference.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.AssemblyInfoInputs.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.AssemblyInfo.cs
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.csproj.CoreCompileInputs.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.sourcelink.json
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\Employee.E444B6B5.Up2Date
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\refint\EmployeeService.ClientHttp.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\EmployeeService.ClientHttp.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\obj\Release\net10.0\ref\EmployeeService.ClientHttp.dll

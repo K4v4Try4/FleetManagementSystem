@@ -1,0 +1,12 @@
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\bin\Debug\net10.0\EmployeeService.Shared.deps.json
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\bin\Debug\net10.0\EmployeeService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\bin\Debug\net10.0\EmployeeService.Shared.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.AssemblyInfoInputs.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.AssemblyInfo.cs
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.csproj.CoreCompileInputs.cache
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.sourcelink.json
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\refint\EmployeeService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\EmployeeService.Shared.pdb
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.Shared\obj\Debug\net10.0\ref\EmployeeService.Shared.dll

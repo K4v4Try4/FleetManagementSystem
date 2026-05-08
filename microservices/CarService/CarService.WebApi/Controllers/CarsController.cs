@@ -1,6 +1,5 @@
 ﻿using CarService.Business.Interfaces;
 using CarService.Shared.DTOs;
-using CarService.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarService.WebApi.Controllers

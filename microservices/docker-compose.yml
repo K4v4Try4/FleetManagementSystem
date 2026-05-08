@@ -102,6 +102,50 @@ services:
     networks:
       - fleet-network
 
+  # --- MICROSERVICE: Employee Service ---
+  employee-service:
+    image: employee-service-api  # Nome immagine custom
+    container_name: employee-service-app
+    build:
+      context: . # Build context (root del progetto)
+      dockerfile: EmployeeService/EmployeeService.WebApi/Dockerfile  # Dockerfile specifico
+    ports:
+      - "5001:8080"  # Espone API su localhost:5001
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development  # Ambiente .NET
+      # Stringa di connessione al database SQL Server
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=EmployeeDb;User Id=sa;Password=Your_Password_123;TrustServerCertificate=True;
+      - Kafka__BootstrapServers=kafka:9092  # Endpoint Kafka interno
+    depends_on:
+      kafka:
+        condition: service_healthy
+      kafka-init:
+        condition: service_completed_successfully
+    networks:
+      - fleet-network
+
+  # --- MICROSERVICE: Booking Service ---
+  booking-service:
+    image: booking-service-api  # Nome immagine custom
+    container_name: booking-service-app
+    build:
+      context: . # Build context (root del progetto)
+      dockerfile: BookingService/BookingService.WebApi/Dockerfile  # Dockerfile specifico
+    ports:
+      - "5001:8080"  # Espone API su localhost:5001
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development  # Ambiente .NET
+      # Stringa di connessione al database SQL Server
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=BookingDb;User Id=sa;Password=Your_Password_123;TrustServerCertificate=True;
+      - Kafka__BootstrapServers=kafka:9092  # Endpoint Kafka interno
+    depends_on:
+      kafka:
+        condition: service_healthy
+      kafka-init:
+        condition: service_completed_successfully
+    networks:
+      - fleet-network
+
 # --- NETWORKING ---
 networks:
   fleet-network:

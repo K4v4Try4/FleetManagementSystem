@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EmployeeService.Business/EmployeeService.Business.csproj" />
+  <Project Path="EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj" />
+  <Project Path="EmployeeService.Repository/EmployeeService.Repository.csproj" />
+  <Project Path="EmployeeService.Shared/EmployeeService.Shared.csproj" />
+  <Project Path="EmployeeService.WebApi/EmployeeService.WebApi.csproj" />
+</Solution>

@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="BookingService.Business/BookingService.Business.csproj" Id="0c7af0a6-114f-418f-8a22-b4379c0f0dd2" />
+  <Project Path="BookingService.ClientHttp/BookingService.ClientHttp.csproj" Id="e30ab882-7f2b-4a93-adab-67c4dca3187b" />
+  <Project Path="BookingService.Repository/BookingService.Repository.csproj" Id="eea6512d-9688-423b-9642-8efd4b5db9e3" />
+  <Project Path="BookingService.Shared/BookingService.Shared.csproj" Id="28b9686d-4b6f-41a7-b496-c30a743d2c51" />
+  <Project Path="BookingService.WebApi/BookingService.WebApi.csproj" Id="98cb800c-3857-4e07-bc6b-e78bfe0c71b0" />
+</Solution>

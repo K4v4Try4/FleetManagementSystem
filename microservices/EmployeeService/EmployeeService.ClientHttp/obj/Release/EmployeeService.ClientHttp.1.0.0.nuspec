@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EmployeeService.ClientHttp</id>
+    <version>1.0.0</version>
+    <authors>EmployeeService.ClientHttp</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="5c6ab444eabdbd8e8e785afe0a5dfdd067c834cd" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="EmployeeService.Shared" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\cavel\Desktop\FleetManagementSystem\microservices\EmployeeService\EmployeeService.ClientHttp\bin\Release\net10.0\EmployeeService.ClientHttp.dll" target="lib\net10.0\EmployeeService.ClientHttp.dll" />
+  </files>
+</package>
