@@ -17,7 +17,7 @@ jobs:
     strategy:
       # Qui elenchi i nomi delle tue cartelle che contengono un Dockerfile
       matrix:
-        service: [microservices/CarService/CarService.Api, microservices/EmployeeService/EmployeeService.Api]
+        service: [microservices/CarService/CarService.WebApi, microservices/EmployeeService/EmployeeService.WebApi]
 
     steps:
       - name: Checkout repository
@@ -42,7 +42,7 @@ jobs:
         with:
           context: .
           # Punta dinamicamente al Dockerfile nella cartella del servizio
-          file: ${{ matrix.service }}/Dockerfile 
+          file: ./${{ matrix.service }}/Dockerfile 
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
