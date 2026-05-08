@@ -19,14 +19,19 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Pack Specific Projects
-        # Usiamo i percorsi relativi partendo dalla cartella 'microservices'
+      - name: Pack Projects
         run: |
+          # Car Service
           dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./nuget-packages
           dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./nuget-packages
+          
+          # Employee Service
           dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./nuget-packages
           dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./nuget-packages
+          
+          # Booking Service
+          # dotnet pack microservices/BookingService/BookingService.Shared/BookingService.Shared.csproj -c Release -o ./nuget-packages
+          # dotnet pack microservices/BookingService/BookingService.ClientHttp/BookingService.ClientHttp.csproj -c Release -o ./nuget-packages
 
       - name: Push to GitHub Packages
-        # Questo comando prende tutto quello che abbiamo appena creato nella cartella 'nuget-packages'
         run: dotnet nuget push "./nuget-packages/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
