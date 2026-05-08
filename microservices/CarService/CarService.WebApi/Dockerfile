@@ -10,17 +10,17 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Questo permette al restore di vedere i riferimenti tra i progetti
-COPY ["CarService/CarService.WebApi/CarService.WebApi.csproj", "CarService/CarService.WebApi/"]
-COPY ["CarService/CarService.Business/CarService.Business.csproj", "CarService/CarService.Business/"]
-COPY ["CarService/CarService.Repository/CarService.Repository.csproj", "CarService/CarService.Repository/"]
-COPY ["CarService/CarService.Shared/CarService.Shared.csproj", "CarService/CarService.Shared/"]
-COPY ["CarService/CarService.ClientHttp/CarService.ClientHttp.csproj", "CarService/CarService.ClientHttp/"]
+COPY ["microservices/CarService/CarService.WebApi/CarService.WebApi.csproj", "microservices/CarService/CarService.WebApi/"]
+COPY ["microservices/CarService/CarService.Business/CarService.Business.csproj", "microservices/CarService/CarService.Business/"]
+COPY ["microservices/CarService/CarService.Repository/CarService.Repository.csproj", "microservices/CarService/CarService.Repository/"]
+COPY ["microservices/CarService/CarService.Shared/CarService.Shared.csproj", "microservices/CarService/CarService.Shared/"]
+COPY ["microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj", "microservices/CarService/CarService.ClientHttp/"]
 
 # Esegue il restore globale
-RUN dotnet restore "CarService/CarService.WebApi/CarService.WebApi.csproj"
+RUN dotnet restore "microservices/CarService/CarService.WebApi/CarService.WebApi.csproj"
 
 # Ora copia tutto il resto del codice sorgente
-COPY ["CarService/", "CarService/"]
+COPY ["microservices/CarService/", "microservices/CarService/"]
 
 # Spostati nella cartella del progetto principale
 WORKDIR "/src/CarService/CarService.WebApi"
