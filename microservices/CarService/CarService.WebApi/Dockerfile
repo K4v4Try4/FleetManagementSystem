@@ -10,23 +10,17 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Questo permette al restore di vedere i riferimenti tra i progetti
-COPY ["CarService/CarService.WebApi/CarService.WebApi.csproj", "CarService/CarService.WebApi/"]
-COPY ["CarService/CarService.Business/CarService.Business.csproj", "CarService/CarService.Business/"]
-COPY ["CarService/CarService.Repository/CarService.Repository.csproj", "CarService/CarService.Repository/"]
-COPY ["CarService/CarService.Shared/CarService.Shared.csproj", "CarService/CarService.Shared/"]
-COPY ["CarService/CarService.ClientHttp/CarService.ClientHttp.csproj", "CarService/CarService.ClientHttp/"]
+# Modifica i percorsi per includere 'microservices/EmployeeService/'
+COPY ["microservices/EmployeeService/EmployeeService.WebApi/EmployeeService.WebApi.csproj", "microservices/EmployeeService/EmployeeService.WebApi/"]
+COPY ["microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj", "microservices/EmployeeService/EmployeeService.Shared/"]
+COPY ["microservices/EmployeeService/EmployeeService.Business/EmployeeService.Business.csproj", "microservices/EmployeeService/EmployeeService.Business/"]
+COPY ["microservices/EmployeeService/EmployeeService.Repository/EmployeeService.Repository.csproj", "microservices/EmployeeService/EmployeeService.Repository/"]
+COPY ["microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj", "microservices/EmployeeService/EmployeeService.ClientHttp/"]
 
-# Esegue il restore globale
-RUN dotnet restore "CarService/CarService.WebApi/CarService.WebApi.csproj"
-
-# Ora copia tutto il resto del codice sorgente
-COPY ["CarService/", "CarService/"]
-
-# Spostati nella cartella del progetto principale
-WORKDIR "/src/CarService/CarService.WebApi"
-
-# Compila
-RUN dotnet build "CarService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet restore "microservices/EmployeeService/EmployeeService.WebApi/EmployeeService.WebApi.csproj"
+COPY . .
+WORKDIR "/src/microservices/EmployeeService/EmployeeService.WebApi"
+RUN dotnet build "EmployeeService.WebApi.csproj" -c Release -o /app/build
 
 # 3. Publish Stage
 FROM build AS publish
