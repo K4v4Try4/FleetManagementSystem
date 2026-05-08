@@ -34,7 +34,7 @@ jobs:
       - name: Build and push Car Service
         uses: docker/build-push-action@v5
         with:
-          context: ..
+          context: ./microservices
           file: ./microservices/CarService/CarService.WebApi/Dockerfile 
           push: true
           # Usiamo ${{ env.REPO_LOWER }} invece di github.repository
@@ -44,7 +44,7 @@ jobs:
       - name: Build and push Employee Service
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./microservices
           file: ./microservices/EmployeeService/EmployeeService.WebApi/Dockerfile 
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/employee-service:latest
