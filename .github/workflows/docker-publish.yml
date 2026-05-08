@@ -1,20 +1,23 @@
-name: Docker Publish
+name: Docker Publish Multi-Service
 
 on:
   push:
     branches: [ "main" ]
-    tags: [ 'v*.*.*' ]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+
+    strategy:
+      # Qui elenchi i nomi delle tue cartelle che contengono un Dockerfile
+      matrix:
+        service: [CarService, EmployeeService] 
 
     steps:
       - name: Checkout repository
@@ -31,12 +34,15 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # Questo creerà immagini separate: nome-repo/car, nome-repo/employee, ecc.
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.service }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
+          # Punta dinamicamente al Dockerfile nella cartella del servizio
+          file: ./${{ matrix.service }}/Dockerfile 
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
