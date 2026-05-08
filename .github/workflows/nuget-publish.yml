@@ -17,21 +17,20 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x' 
+
+      - name: Restore dependencies
+        run: dotnet restore microservices/CarService/CarService.slnx
 
       - name: Pack Projects
         run: |
-          # Car Service
-          dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./nuget-packages
-          dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./nuget-packages
+          # Car Service [cite: 1, 8]
+          dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./nuget-packages --no-restore
+          dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./nuget-packages --no-restore
           
-          # Employee Service
-          dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./nuget-packages
-          dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./nuget-packages
-          
-          # Booking Service
-          # dotnet pack microservices/BookingService/BookingService.Shared/BookingService.Shared.csproj -c Release -o ./nuget-packages
-          # dotnet pack microservices/BookingService/BookingService.ClientHttp/BookingService.ClientHttp.csproj -c Release -o ./nuget-packages
+          # Employee Service [cite: 1, 14]
+          dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./nuget-packages --no-restore
+          dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./nuget-packages --no-restore
 
       - name: Push to GitHub Packages
         run: dotnet nuget push "./nuget-packages/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
