@@ -29,4 +29,4 @@ jobs:
 
       - name: Push to GitHub Packages
         # Questo comando prende tutto quello che abbiamo appena creato nella cartella 'artifacts'
-        run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
+        run: dotnet nuget push "./nuget-packages/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
