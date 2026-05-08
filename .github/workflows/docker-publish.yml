@@ -1,59 +1,39 @@
-name: Docker Publish Multi-Service (No Matrix)
+name: Publish Shared Libraries
 
 on:
   push:
     branches: [ "main" ]
 
-env:
-  REGISTRY: ghcr.io
-
 jobs:
-  build-and-push:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Questo step trasforma il nome del repo in minuscolo
-      - name: Lowercase Repo Name
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          # Allineato ai tuoi Dockerfile (usa 10.0.x se i tuoi csproj sono net10.0)
+          dotnet-version: '10.0.x' 
+
+      # Fondamentale: ripristina le dipendenze prima di impacchettare
+      - name: Restore dependencies
+        run: dotnet restore microservices/CarService/CarService.slnx
+
+      - name: Pack Projects
         run: |
-          echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+          # Car Service - Percorsi completi dalla root del repository
+          dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./nuget-packages
+          dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./nuget-packages
+          
+          # Employee Service
+          dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./nuget-packages
+          dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./nuget-packages
 
-      - name: Log into registry ${{ env.REGISTRY }}
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      # --- CAR SERVICE ---
-      - name: Build and push Car Service
-        uses: docker/build-push-action@v5
-        with:
-          context: ./microservices
-          file: ./microservices/CarService/CarService.WebApi/Dockerfile 
-          push: true
-          # Usiamo ${{ env.REPO_LOWER }} invece di github.repository
-          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/car-service:latest
-
-      # --- EMPLOYEE SERVICE ---
-      - name: Build and push Employee Service
-        uses: docker/build-push-action@v5
-        with:
-          context: ./microservices
-          file: ./microservices/EmployeeService/EmployeeService.WebApi/Dockerfile 
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/employee-service:latest
-
-      # --- BOOKING SERVICE ---
-      # - name: Build and push Booking Service
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     file: ./microservices/BookingService/BookingService.WebApi/Dockerfile 
-      #     push: true
-      #     tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}/booking-service:latest
+      - name: Push to GitHub Packages
+        # Assicurati che nel file nuget.config ci sia l'URL di GitHub Packages
+        run: dotnet nuget push "./nuget-packages/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
