@@ -1,12 +1,11 @@
-name: Publish NuGet Package
+name: Publish Shared Libraries
 
 on:
   push:
-    branches: [ main ] # Oppure "release"
-  workflow_dispatch: # Permette l'avvio manuale
+    branches: [ "main" ]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,11 +16,17 @@ jobs:
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
-      # Questo comando crea i pacchetti partendo dal codice che hai pushato
-      - name: Pack
-        run: dotnet pack --configuration Release --output ./nupkgs
+      - name: Pack Specific Projects
+        # Usiamo i percorsi relativi partendo dalla cartella 'microservices'
+        run: |
+          dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./artifacts
+          dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./artifacts
+          dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./artifacts
+          dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./artifacts
 
-      # Questo comando li pubblica prendendoli dalla cartella appena creata sul server
-      - name: Publish
-        run: dotnet nuget push "./nupkgs/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
+      - name: Push to GitHub Packages
+        # Questo comando prende tutto quello che abbiamo appena creato nella cartella 'artifacts'
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
