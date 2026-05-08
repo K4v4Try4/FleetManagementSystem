@@ -10,17 +10,23 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Questo permette al restore di vedere i riferimenti tra i progetti
-# Modifica i percorsi per includere 'microservices/EmployeeService/'
-COPY ["microservices/EmployeeService/EmployeeService.WebApi/EmployeeService.WebApi.csproj", "microservices/EmployeeService/EmployeeService.WebApi/"]
-COPY ["microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj", "microservices/EmployeeService/EmployeeService.Shared/"]
-COPY ["microservices/EmployeeService/EmployeeService.Business/EmployeeService.Business.csproj", "microservices/EmployeeService/EmployeeService.Business/"]
-COPY ["microservices/EmployeeService/EmployeeService.Repository/EmployeeService.Repository.csproj", "microservices/EmployeeService/EmployeeService.Repository/"]
-COPY ["microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj", "microservices/EmployeeService/EmployeeService.ClientHttp/"]
+COPY ["EmployeeService/EmployeeService.WebApi/EmployeeService.WebApi.csproj", "EmployeeService/EmployeeService.WebApi/"]
+COPY ["EmployeeService/EmployeeService.Business/EmployeeService.Business.csproj", "EmployeeService/EmployeeService.Business/"]
+COPY ["EmployeeService/EmployeeService.Repository/EmployeeService.Repository.csproj", "EmployeeService/EmployeeService.Repository/"]
+COPY ["EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj", "EmployeeService/EmployeeService.Shared/"]
+COPY ["EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj", "EmployeeService/EmployeeService.ClientHttp/"]
 
-RUN dotnet restore "microservices/EmployeeService/EmployeeService.WebApi/EmployeeService.WebApi.csproj"
-COPY . .
-WORKDIR "/src/microservices/EmployeeService/EmployeeService.WebApi"
-RUN dotnet build "EmployeeService.WebApi.csproj" -c Release -o /app/build
+# Esegue il restore globale
+RUN dotnet restore "EmployeeService/EmployeeService.WebApi/EmployeeService.WebApi.csproj"
+
+# Ora copia tutto il resto del codice sorgente
+COPY ["EmployeeService/", "EmployeeService/"]
+
+# Spostati nella cartella del progetto principale
+WORKDIR "/src/EmployeeService/EmployeeService.WebApi"
+
+# Compila
+RUN dotnet build "EmployeeService.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # 3. Publish Stage
 FROM build AS publish

@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98CB800C-3857-4E07-BC6B-E78BFE0C71B0}|BookingService.WebApi\\BookingService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\bookingservice\\bookingservice.webapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{98CB800C-3857-4E07-BC6B-E78BFE0C71B0}|BookingService.WebApi\\BookingService.WebApi.csproj|solutionrelative:bookingservice.webapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\BookingService.WebApi\\Dockerfile",
+              "RelativeDocumentMoniker": "BookingService.WebApi\\Dockerfile",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\BookingService.WebApi\\Dockerfile",
+              "RelativeToolTip": "BookingService.WebApi\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-08T14:57:24.845Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
