@@ -1,4 +1,4 @@
-name: Publish Shared Libraries
+name: Docker Publish
 
 on:
   push:
@@ -14,25 +14,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Set lowercase owner
+        run: echo "OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          dotnet-version: '10.0.x'
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Authenticate GitHub Packages
-        run: dotnet nuget update source github --username ${{ github.actor }} --password ${{ secrets.NUGET_TOKEN }} --store-password-in-clear-text
+      - name: Build and push CarService
+        uses: docker/build-push-action@v5
+        with:
+          context: microservices
+          file: microservices/CarService/CarService.WebApi/Dockerfile
+          push: true
+          tags: ghcr.io/${{ env.OWNER }}/carservice:latest
 
-      - name: Restore dependencies
-        run: |
-          dotnet restore microservices/CarService/CarService.slnx
-          dotnet restore microservices/EmployeeService/EmployeeService.slnx
+      - name: Build and push EmployeeService
+        uses: docker/build-push-action@v5
+        with:
+          context: microservices
+          file: microservices/EmployeeService/EmployeeService.WebApi/Dockerfile
+          push: true
+          tags: ghcr.io/${{ env.OWNER }}/employeeservice:latest
 
-      - name: Pack Projects
-        run: |
-          dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./nuget-packages --no-restore
-          dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./nuget-packages --no-restore
-          dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./nuget-packages --no-restore
-          dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./nuget-packages --no-restore
-
-      - name: Push to GitHub Packages
-        run: dotnet nuget push "./nuget-packages/*.nupkg" --api-key ${{ secrets.NUGET_TOKEN }} --source "github" --skip-duplicate
+      - name: Build and push BookingService
+        uses: docker/build-push-action@v5
+        with:
+          context: microservices
+          file: microservices/BookingService/BookingService.WebApi/Dockerfile
+          push: true
+          tags: ghcr.io/${{ env.OWNER }}/bookingservice:latest
