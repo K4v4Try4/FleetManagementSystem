@@ -17,18 +17,20 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x' 
+          dotnet-version: '10.0.x'
+
+      - name: Authenticate GitHub Packages
+        run: dotnet nuget update source github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
 
       - name: Restore dependencies
-        run: dotnet restore microservices/CarService/CarService.slnx
+        run: |
+          dotnet restore microservices/CarService/CarService.slnx
+          dotnet restore microservices/EmployeeService/EmployeeService.slnx
 
       - name: Pack Projects
         run: |
-          # Car Service [cite: 1, 8]
           dotnet pack microservices/CarService/CarService.Shared/CarService.Shared.csproj -c Release -o ./nuget-packages --no-restore
           dotnet pack microservices/CarService/CarService.ClientHttp/CarService.ClientHttp.csproj -c Release -o ./nuget-packages --no-restore
-          
-          # Employee Service [cite: 1, 14]
           dotnet pack microservices/EmployeeService/EmployeeService.Shared/EmployeeService.Shared.csproj -c Release -o ./nuget-packages --no-restore
           dotnet pack microservices/EmployeeService/EmployeeService.ClientHttp/EmployeeService.ClientHttp.csproj -c Release -o ./nuget-packages --no-restore
 
