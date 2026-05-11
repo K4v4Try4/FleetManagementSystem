@@ -3,7 +3,7 @@
 │   └── 📁 workflows
 │       ├── 📄 docker-publish.yml
 │       └── 📄 nuget-publish.yml
-├── 📄 FleetManagementSystem_2026-05-06_16-35-53.txt
+├── 📄 FleetManagementSystem_2026-05-08_16-36-30.txt
 ├── 📄 README.md
 ├── 📄 appunti.txt
 ├── 📁 microservices
@@ -11,19 +11,37 @@
 │   │   ├── 📄 .dockerignore
 │   │   ├── 📁 BookingService.Business
 │   │   │   ├── 📄 BookingService.Business.csproj
-│   │   │   └── 📄 Class1.cs
+│   │   │   ├── 📁 Interfaces
+│   │   │   │   ├── 📄 IBookingBusinessService.cs
+│   │   │   │   └── 📄 IBookingEventProducer.cs
+│   │   │   ├── 📁 Kafka
+│   │   │   │   └── 📄 BookingEventProducer.cs
+│   │   │   └── 📁 Services
+│   │   │       └── 📄 BookingBusinessService.cs
 │   │   ├── 📁 BookingService.ClientHttp
 │   │   │   ├── 📄 BookingService.ClientHttp.csproj
-│   │   │   └── 📄 Class1.cs
+│   │   │   ├── 📁 Implementations
+│   │   │   └── 📁 Interfaces
 │   │   ├── 📁 BookingService.Repository
 │   │   │   ├── 📄 BookingService.Repository.csproj
-│   │   │   └── 📄 Class1.cs
+│   │   │   ├── 📁 Implementations
+│   │   │   │   └── 📄 BookingRepository.cs
+│   │   │   ├── 📁 Interfaces
+│   │   │   │   └── 📄 IBookingRepository.cs
+│   │   │   ├── 📁 Migrations
+│   │   │   └── 📁 Persistence
+│   │   │       └── 📄 BookingDbContext.cs
 │   │   ├── 📁 BookingService.Shared
 │   │   │   ├── 📄 BookingService.Shared.csproj
 │   │   │   ├── 📁 DTOs
+│   │   │   │   ├── 📄 BookingCreateDto.cs
+│   │   │   │   └── 📄 BookingDto.cs
 │   │   │   ├── 📁 Entities
+│   │   │   │   └── 📄 Booking.cs
 │   │   │   ├── 📁 Enums
+│   │   │   │   └── 📄 BookingStatus.cs
 │   │   │   └── 📁 Events
+│   │   │       └── 📄 TripCompletedEvent.cs
 │   │   ├── 📁 BookingService.WebApi
 │   │   │   ├── 📄 BookingService.WebApi.csproj
 │   │   │   ├── 📄 BookingService.WebApi.csproj.user

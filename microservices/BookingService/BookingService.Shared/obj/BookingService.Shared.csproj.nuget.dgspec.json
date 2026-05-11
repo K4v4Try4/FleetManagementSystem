@@ -27,6 +27,7 @@
         ],
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
           "https://nuget.pkg.github.com/K4v4Try4/index.json": {}
         },
         "frameworks": {

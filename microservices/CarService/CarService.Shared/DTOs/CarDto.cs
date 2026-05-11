@@ -1,6 +1,4 @@
-﻿using CarService.Shared.Enums;
-
-namespace CarService.Shared.DTOs
+﻿namespace CarService.Shared.DTOs
 {
     /// <summary>
     /// Data Transfer Object che rappresenta un veicolo.
