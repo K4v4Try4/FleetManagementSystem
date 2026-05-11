@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set lowercase owner
+        run: echo "OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -27,7 +30,7 @@ jobs:
           context: microservices/CarService
           file: microservices/CarService/CarService.WebApi/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/carservice:latest
+          tags: ghcr.io/${{ env.OWNER }}/carservice:latest
 
       - name: Build and push EmployeeService
         uses: docker/build-push-action@v5
@@ -35,7 +38,7 @@ jobs:
           context: microservices/EmployeeService
           file: microservices/EmployeeService/EmployeeService.WebApi/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/employeeservice:latest
+          tags: ghcr.io/${{ env.OWNER }}/employeeservice:latest
 
       - name: Build and push BookingService
         uses: docker/build-push-action@v5
@@ -43,4 +46,4 @@ jobs:
           context: microservices/BookingService
           file: microservices/BookingService/BookingService.WebApi/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/bookingservice:latest
+          tags: ghcr.io/${{ env.OWNER }}/bookingservice:latest
