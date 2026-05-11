@@ -39,11 +39,3 @@ jobs:
           file: microservices/EmployeeService/EmployeeService.WebApi/Dockerfile
           push: true
           tags: ghcr.io/${{ env.OWNER }}/employeeservice:latest
-
-      - name: Build and push BookingService
-        uses: docker/build-push-action@v5
-        with:
-          context: microservices
-          file: microservices/BookingService/BookingService.WebApi/Dockerfile
-          push: true
-          tags: ghcr.io/${{ env.OWNER }}/bookingservice:latest
