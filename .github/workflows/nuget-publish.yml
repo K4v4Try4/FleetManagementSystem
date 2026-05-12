@@ -21,8 +21,7 @@ jobs:
 
       - name: Restore dependencies
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
         run: |
           dotnet restore microservices/CarService/CarService.slnx
           dotnet restore microservices/EmployeeService/EmployeeService.slnx
@@ -36,6 +35,10 @@ jobs:
 
       - name: Push to GitHub Packages
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
-        run: dotnet nuget push "./nuget-packages/*.nupkg" --api-key ${{ secrets.NUGET_TOKEN }} --source "github" --skip-duplicate
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+        run: |
+          dotnet nuget push "./nuget-packages/*.nupkg" \
+            --api-key ${{ secrets.NUGET_TOKEN }} \
+            --source "github" \
+            --configfile "${{ github.workspace }}/nuget.config" \
+            --skip-duplicate
