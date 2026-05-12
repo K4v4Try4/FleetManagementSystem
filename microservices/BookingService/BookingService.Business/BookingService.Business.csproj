@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookingService.Repository\BookingService.Repository.csproj" />
     <ProjectReference Include="..\BookingService.Shared\BookingService.Shared.csproj" />
   </ItemGroup>
 

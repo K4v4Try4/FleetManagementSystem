@@ -3,9 +3,9 @@
   <metadata>
     <id>EmployeeService.Shared</id>
     <version>1.0.0</version>
-    <authors>EmployeeService.Shared</authors>
+    <authors>K4v4Try4</authors>
     <description>Package Description</description>
-    <repository type="git" commit="5c6ab444eabdbd8e8e785afe0a5dfdd067c834cd" />
+    <repository type="git" commit="13da813c0529438faff547981efbf08ba5376716" />
     <dependencies>
       <group targetFramework="net10.0" />
     </dependencies>

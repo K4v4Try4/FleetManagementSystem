@@ -10,10 +10,10 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeService.Shared")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("FleetManagementSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c6ab444eabdbd8e8e785afe0a5dfdd067c834cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13da813c0529438faff547981efbf08ba5376716")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeService.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeService.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
