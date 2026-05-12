@@ -37,8 +37,12 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
         run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/K4v4Try4/index.json" \
+            --name "github" \
+            --username "K4v4Try4" \
+            --password ${{ secrets.NUGET_TOKEN }} \
+            --store-password-in-clear-text
           dotnet nuget push "./nuget-packages/*.nupkg" \
             --api-key ${{ secrets.NUGET_TOKEN }} \
             --source "github" \
-            --configfile "${{ github.workspace }}/nuget.config" \
             --skip-duplicate
