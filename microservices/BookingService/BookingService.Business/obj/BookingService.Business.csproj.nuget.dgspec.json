@@ -61,9 +61,25 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "CarService.ClientHttp": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "CarService.Shared": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Confluent.Kafka": {
               "target": "Package",
               "version": "[2.14.0, )"
+            },
+            "EmployeeService.ClientHttp": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "EmployeeService.Shared": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -419,6 +435,10 @@
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[10.0.7, )"
             }

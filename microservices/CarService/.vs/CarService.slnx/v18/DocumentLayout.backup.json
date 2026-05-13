@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BDE6FB01-1A09-4E8A-A46B-3D08BC92E836}|CarService.Repository\\CarService.Repository.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.repository\\persistence\\cardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDE6FB01-1A09-4E8A-A46B-3D08BC92E836}|CarService.Repository\\CarService.Repository.csproj|solutionrelative:carservice.repository\\persistence\\cardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDE6FB01-1A09-4E8A-A46B-3D08BC92E836}|CarService.Repository\\CarService.Repository.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.repository\\implementations\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDE6FB01-1A09-4E8A-A46B-3D08BC92E836}|CarService.Repository\\CarService.Repository.csproj|solutionrelative:carservice.repository\\implementations\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BCE0AF2-6136-4AE6-B645-D3B981B4123A}|CarService.Business\\CarService.Business.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.business\\services\\carbusinessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BCE0AF2-6136-4AE6-B645-D3B981B4123A}|CarService.Business\\CarService.Business.csproj|solutionrelative:carservice.business\\services\\carbusinessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|solutionrelative:carservice.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.webapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|solutionrelative:carservice.webapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +35,57 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CarDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.Repository\\Persistence\\CarDbContext.cs",
+              "RelativeDocumentMoniker": "CarService.Repository\\Persistence\\CarDbContext.cs",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.Repository\\Persistence\\CarDbContext.cs",
+              "RelativeToolTip": "CarService.Repository\\Persistence\\CarDbContext.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T07:23:32.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CarBusinessService.cs",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.Business\\Services\\CarBusinessService.cs",
+              "RelativeDocumentMoniker": "CarService.Business\\Services\\CarBusinessService.cs",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.Business\\Services\\CarBusinessService.cs",
+              "RelativeToolTip": "CarService.Business\\Services\\CarBusinessService.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAQwF8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T13:12:47.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarRepository.cs",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.Repository\\Implementations\\CarRepository.cs",
+              "RelativeDocumentMoniker": "CarService.Repository\\Implementations\\CarRepository.cs",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.Repository\\Implementations\\CarRepository.cs",
+              "RelativeToolTip": "CarService.Repository\\Implementations\\CarRepository.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T13:11:59.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "CarService.WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Program.cs",
+              "RelativeToolTip": "CarService.WebApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T12:57:30.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CarsController.cs",
               "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Controllers\\CarsController.cs",
               "RelativeDocumentMoniker": "CarService.WebApi\\Controllers\\CarsController.cs",
@@ -26,8 +93,7 @@
               "RelativeToolTip": "CarService.WebApi\\Controllers\\CarsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T18:50:45.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-06T18:50:45.66Z"
             }
           ]
         }

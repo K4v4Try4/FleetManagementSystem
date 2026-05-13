@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C7AF0A6-114F-418F-8A22-B4379C0F0DD2}|BookingService.Business\\BookingService.Business.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\bookingservice\\bookingservice.business\\services\\bookingbusinessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7AF0A6-114F-418F-8A22-B4379C0F0DD2}|BookingService.Business\\BookingService.Business.csproj|solutionrelative:bookingservice.business\\services\\bookingbusinessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98CB800C-3857-4E07-BC6B-E78BFE0C71B0}|BookingService.WebApi\\BookingService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\bookingservice\\bookingservice.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{98CB800C-3857-4E07-BC6B-E78BFE0C71B0}|BookingService.WebApi\\BookingService.WebApi.csproj|solutionrelative:bookingservice.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BookingBusinessService.cs",
-              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\BookingService.Business\\Services\\BookingBusinessService.cs",
-              "RelativeDocumentMoniker": "BookingService.Business\\Services\\BookingBusinessService.cs",
-              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\BookingService.Business\\Services\\BookingBusinessService.cs",
-              "RelativeToolTip": "BookingService.Business\\Services\\BookingBusinessService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T12:35:38.157Z",
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\BookingService.WebApi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BookingService.WebApi\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\BookingService\\BookingService.WebApi\\appsettings.Development.json",
+              "RelativeToolTip": "BookingService.WebApi\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-13T07:53:40.812Z",
               "EditorCaption": ""
             }
           ]

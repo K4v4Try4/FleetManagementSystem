@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "r8o15t9YgWA=",
+  "dgSpecHash": "dThJa6onMac=",
   "success": true,
   "projectFilePath": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.ClientHttp\\CarService.ClientHttp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\cavel\\.nuget\\packages\\carservice.shared\\1.0.0\\carservice.shared.1.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

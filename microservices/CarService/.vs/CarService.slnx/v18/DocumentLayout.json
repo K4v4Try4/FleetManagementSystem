@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|solutionrelative:carservice.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|solutionrelative:carservice.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.webapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|solutionrelative:carservice.webapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|c:\\users\\cavel\\desktop\\fleetmanagementsystem\\microservices\\carservice\\carservice.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CDC40E20-D403-46CC-8E1A-9F5860A6DBFF}|CarService.WebApi\\CarService.WebApi.csproj|solutionrelative:carservice.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "CarService.WebApi\\Program.cs",
-              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Program.cs",
-              "RelativeToolTip": "CarService.WebApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T12:57:30.548Z",
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "CarService.WebApi\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\appsettings.Development.json",
+              "RelativeToolTip": "CarService.WebApi\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-13T07:53:51.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CarsController.cs",
-              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Controllers\\CarsController.cs",
-              "RelativeDocumentMoniker": "CarService.WebApi\\Controllers\\CarsController.cs",
-              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\Controllers\\CarsController.cs",
-              "RelativeToolTip": "CarService.WebApi\\Controllers\\CarsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T18:50:45.66Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\appsettings.json",
+              "RelativeDocumentMoniker": "CarService.WebApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\cavel\\Desktop\\FleetManagementSystem\\microservices\\CarService\\CarService.WebApi\\appsettings.json",
+              "RelativeToolTip": "CarService.WebApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-13T07:53:00.279Z",
               "EditorCaption": ""
             }
           ]

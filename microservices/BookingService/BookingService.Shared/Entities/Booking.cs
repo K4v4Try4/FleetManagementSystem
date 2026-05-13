@@ -10,7 +10,7 @@ namespace BookingService.Shared.Entities
         /// <summary>
         /// Identificativo univoco della prenotazione.
         /// </summary>
-        public int Id { get; set; }
+        public short Id { get; set; }
 
         /// <summary>
         /// Identificativo del dipendente che ha effettuato la prenotazione.

@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CarService.ClientHttp" Version="1.0.0" />
+    <PackageReference Include="CarService.Shared" Version="1.0.0" />
     <PackageReference Include="Confluent.Kafka" Version="2.14.0" />
+    <PackageReference Include="EmployeeService.ClientHttp" Version="1.0.0" />
+    <PackageReference Include="EmployeeService.Shared" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
   </ItemGroup>
 
