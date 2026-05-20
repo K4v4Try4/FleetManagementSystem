@@ -1,0 +1,65 @@
+## ——————————————————————————————————————————————————————————————————————
+## FILE DI CONFIGURAZIONE E AMBIENTE (SICUREZZA)
+## ——————————————————————————————————————————————————————————————————————
+# Ignora TUTTI i file .env (evita il push di token, password e segreti)
+*.env
+*.env.local
+*.env.development
+*.env.production
+microservices/.env
+
+# File di configurazione utente locali di .NET
+*.user
+*.userossc
+*.sln.docstates
+
+## ——————————————————————————————————————————————————————————————————————
+## .NET / C# (COMPILAZIONE E OUTPUT)
+## ——————————————————————————————————————————————————————————————————————
+# Cartelle di build e output
+[Db]in/
+[Oo]bj/
+[Ll]og/
+
+# Pacchetti NuGet scaricati localmente e output di restore
+*.nupkg
+*.snupkg
+**/packages/
+!**/nuget-packages/ # Togli il commento (rimuovi !) se non vuoi caricare la cartella locale dei nuget
+
+## ——————————————————————————————————————————————————————————————————————
+## IDE E STRUMENTI DI SVILUPPO
+## ——————————————————————————————————————————————————————————————————————
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+*.opensdf
+*.sdf
+*.pidb
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## ——————————————————————————————————————————————————————————————————————
+## SISTEMA OPERATIVO
+## ——————————————————————————————————————————————————————————————————————
+Windows/
+Thumbs.db
+Ehthumbs.db
+Desktop.ini
+.DS_Store
