@@ -9,3 +9,4 @@ C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService
 C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Debug\net10.0\refint\CarService.Shared.dll
 C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Debug\net10.0\CarService.Shared.pdb
 C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Debug\net10.0\ref\CarService.Shared.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.Shared\obj\Debug\net10.0\CarService.Shared.sourcelink.json

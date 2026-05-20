@@ -1,25 +1,31 @@
 ﻿namespace BookingService.Shared.DTOs
 {
     /// <summary>
-    /// Data Transfer Object utilizzato per la creazione
-    /// di una nuova prenotazione.
+    /// Data Transfer Object utilizzato per la creazione di un nuova prenotazione.
     /// </summary>
-    /// <param name="EmployeeId">
-    /// Identificativo del dipendente che effettua la prenotazione.
-    /// </param>
-    /// <param name="CarId">
-    /// Identificativo del veicolo da prenotare.
-    /// </param>
-    /// <param name="StartTime">
-    /// Data e ora di inizio della prenotazione.
-    /// </param>
-    /// <param name="EndTime">
-    /// Data e ora di fine della prenotazione.
-    /// </param>
+    /// <remarks>
+    /// Questo DTO contiene solo le informazioni necessarie per registrare una prenotazione nel sistema.
+    /// Lo stato e l'identificativo vengono gestiti automaticamente dal sistema.
+    /// </remarks>
     public record CreateBookingDto(
+        /// <summary>
+        /// Identificativo del dipendente che ha effettuato la prenotazione.
+        /// </summary>
         short EmployeeId,
+
+        /// <summary>
+        /// Identificativo del veicolo associato alla prenotazione.
+        /// </summary>
         short CarId,
+
+        /// <summary>
+        /// Data e ora di inizio della prenotazione.
+        /// </summary>
         DateTime StartTime,
+
+        /// <summary>
+        /// Data e ora di fine della prenotazione.
+        /// </summary>
         DateTime EndTime
     );
 }

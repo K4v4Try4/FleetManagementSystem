@@ -4,8 +4,10 @@ namespace EmployeeService.Business.Interfaces
 {
     /// <summary>
     /// Interfaccia che definisce un produttore di eventi per il dominio Employee.
-    /// Responsabile della pubblicazione di eventi su un sistema di messaging.
     /// </summary>
+    /// <remarks>
+    /// Responsabile della pubblicazione di eventi su un sistema di messaging.
+    /// </remarks>
     public interface IEmployeeEventProducer
     {
         /// <summary>

@@ -7,8 +7,8 @@ using System.Text.Json;
 namespace BookingService.Business.Kafka
 {
     /// <summary>
-    /// Implementazione del producer Kafka responsabile della pubblicazione
-    /// degli eventi relativi alle prenotazioni.
+    /// Implementazione del producer di eventi per Booking basato su Apache Kafka.
+    /// Si occupa della serializzazione e pubblicazione degli eventi sul topic configurato.
     /// </summary>
     public class BookingEventProducer : IBookingEventProducer, IDisposable
     {
@@ -16,11 +16,9 @@ namespace BookingService.Business.Kafka
         private readonly string _topic;
 
         /// <summary>
-        /// Inizializza una nuova istanza della classe <see cref="BookingEventProducer"/>.
+        /// Inizializza il producer Kafka utilizzando la configurazione applicativa.
         /// </summary>
-        /// <param name="configuration">
-        /// Configurazione dell'applicazione contenente i parametri Kafka.
-        /// </param>
+        /// <param name="configuration">Configurazione dell'applicazione (appsettings).</param>
         public BookingEventProducer(IConfiguration configuration)
         {
             var bootstrapServers = configuration["Kafka:BootstrapServers"] ?? "localhost:9092";
@@ -36,9 +34,6 @@ namespace BookingService.Business.Kafka
         /// <param name="event">
         /// Evento contenente le informazioni del viaggio completato.
         /// </param>
-        /// <returns>
-        /// Un task che rappresenta l'operazione asincrona di pubblicazione.
-        /// </returns>
         public async Task PublishTripCompletedAsync(TripCompletedEvent @event)
         {
             var message = new Message<Null, string>
@@ -50,7 +45,7 @@ namespace BookingService.Business.Kafka
         }
 
         /// <summary>
-        /// Rilascia le risorse utilizzate dal producer Kafka.
+        /// Rilascia le risorse del producer Kafka e svuota il buffer dei messaggi.
         /// </summary>
         public void Dispose()
         {

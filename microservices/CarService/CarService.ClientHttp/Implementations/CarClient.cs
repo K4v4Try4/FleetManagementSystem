@@ -1,6 +1,5 @@
 ﻿using CarService.ClientHttp.Interfaces;
 using CarService.Shared.DTOs;
-using CarService.Shared.Enums;
 using System.Net.Http.Json;
 
 namespace CarService.ClientHttp.Implementations
@@ -59,7 +58,6 @@ namespace CarService.ClientHttp.Implementations
         public async Task<bool> UpdateCarStatusAsync(short id, string status)
         {
             // PATCH /api/cars/{id}/status
-            // Nota: invio diretto del valore enum nel body
             var response = await _httpClient.PatchAsJsonAsync(
                 $"api/cars/{id}/status",
                 status);

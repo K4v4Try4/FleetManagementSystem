@@ -4,21 +4,17 @@ using Microsoft.EntityFrameworkCore;
 namespace BookingService.Repository.Persistence
 {
     /// <summary>
-    /// Contesto EF Core per il servizio di prenotazioni.
-    /// Gestisce la configurazione del modello e l'accesso al database.
+    /// DbContext di Entity Framework Core per la gestione del modulo BookingService.
     /// </summary>
     public class BookingDbContext : DbContext
     {
         /// <summary>
-        /// Inizializza una nuova istanza di <see cref="BookingDbContext"/>.
+        /// Inizializza una nuova istanza del contesto con le opzioni specificate.
         /// </summary>
         /// <param name="options">
-        /// Opzioni di configurazione del contesto EF Core.
+        /// Opzioni di configurazione del DbContext.
         /// </param>
-        public BookingDbContext(DbContextOptions<BookingDbContext> options)
-            : base(options)
-        {
-        }
+        public BookingDbContext(DbContextOptions<BookingDbContext> options) : base(options) { }
 
         /// <summary>
         /// Tabella delle prenotazioni nel database.
@@ -38,26 +34,35 @@ namespace BookingService.Repository.Persistence
             // Configurazione entità Booking
             modelBuilder.Entity<Booking>(entity =>
             {
-                // Chiave primaria
+                /// <summary>
+                /// Definisce la chiave primaria.
+                /// </summary>
                 entity.HasKey(e => e.Id);
 
-                // Campi obbligatori
-                entity.Property(e => e.EmployeeId)
-                    .IsRequired();
+                /// <summary>
+                /// Identificativo obbligatorio del dipendente.
+                /// </summary>
+                entity.Property(e => e.EmployeeId).IsRequired();
 
-                entity.Property(e => e.CarId)
-                    .IsRequired();
+                /// <summary>
+                /// Identificativo obbligatorio dell'auto.
+                /// </summary>
+                entity.Property(e => e.CarId).IsRequired();
 
-                entity.Property(e => e.StartTime)
-                    .IsRequired();
+                /// <summary>
+                /// Ora di inizio obbligatoria.
+                /// </summary>
+                entity.Property(e => e.StartTime).IsRequired();
 
-                entity.Property(e => e.EndTime)
-                    .IsRequired();
+                /// <summary>
+                /// Ora di fine obbligatoria.
+                /// </summary>
+                entity.Property(e => e.EndTime).IsRequired();
 
-                // Stato della prenotazione (ACTIVE, COMPLETED, CANCELLED)
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                /// <summary>
+                /// Stato della prenotazione obbligatoria e salvato come stringa nel database.
+                /// </summary>
+                entity.Property(e => e.Status).IsRequired().HasConversion<string>();
 
                 // Indici per ottimizzare le query più frequenti
                 entity.HasIndex(e => e.EmployeeId);

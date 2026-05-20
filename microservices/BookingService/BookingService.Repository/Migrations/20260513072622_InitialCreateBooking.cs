@@ -21,7 +21,7 @@ namespace BookingService.Repository.Migrations
                     CarId = table.Column<short>(type: "smallint", nullable: false),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", maxLength: 20, nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                 },
                 constraints: table =>
                 {

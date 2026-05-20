@@ -3,10 +3,11 @@
 │   └── 📁 workflows
 │       ├── 📄 docker-publish.yml
 │       └── 📄 nuget-publish.yml
-├── 📄 FleetManagementSystem_Structure.txt
 ├── 📄 README.md
 ├── 📄 appunti.txt
+├── 📄 comandi_codice.txt
 ├── 📁 microservices
+│   ├── 📄 .env
 │   ├── 📁 BookingService
 │   │   ├── 📄 .dockerignore
 │   │   ├── 📁 BookingService.Business
@@ -31,6 +32,9 @@
 │   │   │   ├── 📁 Interfaces
 │   │   │   │   └── 📄 IBookingRepository.cs
 │   │   │   ├── 📁 Migrations
+│   │   │   │   ├── 📄 20260513072622_InitialCreateBooking.Designer.cs
+│   │   │   │   ├── 📄 20260513072622_InitialCreateBooking.cs
+│   │   │   │   └── 📄 BookingDbContextModelSnapshot.cs
 │   │   │   └── 📁 Persistence
 │   │   │       └── 📄 BookingDbContext.cs
 │   │   ├── 📁 BookingService.Shared

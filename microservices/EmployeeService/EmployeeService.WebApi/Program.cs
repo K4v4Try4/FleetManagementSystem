@@ -8,32 +8,24 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/// <summary>
-/// Configurazione dei servizi dell'applicazione.
-/// </summary>
-
-// 1. Database
+// Database
 builder.Services.AddDbContext<EmployeeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 2. Dependency Injection (layer repository + business + eventi)
+// Dependency Injection
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeBusinessService, EmployeeBusinessService>();
 builder.Services.AddSingleton<IEmployeeEventProducer, EmployeeEventProducer>();
 
-// 3. MVC / Controllers
+// Controllers
 builder.Services.AddControllers();
 
-// 4. Swagger / OpenAPI
+// Swagger / OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-/// <summary>
-/// Configurazione della pipeline HTTP dell'applicazione.
-/// </summary>
-
-// Middleware
+// Middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -42,13 +34,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
 app.MapControllers();
 
-// Esecuzione migrazioni automatiche al bootstrap dell'applicazione
+// Automatic DB migrations on startup
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<EmployeeDbContext>();
+    var context = scope.ServiceProvider.GetRequiredService<EmployeeDbContext>();
     context.Database.Migrate();
 }
 

@@ -5,9 +5,12 @@ using System.Net.Http.Json;
 namespace EmployeeService.ClientHttp.Implementations
 {
     /// <summary>
-    /// Implementazione del client HTTP per il servizio Employee.
-    /// Utilizza HttpClient per comunicare con le API REST del microservizio.
+    /// Implementazione del client HTTP per l'interazione con il servizio EmployeeService.
     /// </summary>
+    /// <remarks>
+    /// Questa classe utilizza <see cref="HttpClient"/> per comunicare con le API REST
+    /// del servizio di gestione dipendenti.
+    /// </remarks>
     public class EmployeeClient : IEmployeeClient
     {
         private readonly HttpClient _httpClient;
@@ -15,43 +18,33 @@ namespace EmployeeService.ClientHttp.Implementations
         /// <summary>
         /// Inizializza una nuova istanza del client HTTP.
         /// </summary>
-        /// <param name="httpClient">HttpClient configurato tramite IHttpClientFactory.</param>
+        /// <param name="httpClient">
+        /// Istanza di <see cref="HttpClient"/> configurata tramite dependency injection.
+        /// </param>
         public EmployeeClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        /// <summary>
-        /// Recupera tutti i dipendenti dal servizio remoto.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task<IEnumerable<EmployeeDto>?> GetEmployeesAsync()
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<EmployeeDto>>("api/employees");
         }
 
-        /// <summary>
-        /// Recupera un dipendente tramite ID.
-        /// </summary>
-        /// <param name="id">Identificativo del dipendente.</param>
+        /// <inheritdoc/>
         public async Task<EmployeeDto?> GetEmployeeByIdAsync(short id)
         {
             return await _httpClient.GetFromJsonAsync<EmployeeDto>($"api/employees/{id}");
         }
 
-        /// <summary>
-        /// Verifica l'idoneità alla guida di un dipendente.
-        /// </summary>
-        /// <param name="id">Identificativo del dipendente.</param>
+        /// <inheritdoc/>
         public async Task<bool> GetEmployeeEligibilityAsync(short id)
         {
             return await _httpClient.GetFromJsonAsync<bool>($"api/employees/{id}/eligibility");
         }
 
-        /// <summary>
-        /// Crea un nuovo dipendente tramite API REST.
-        /// </summary>
-        /// <param name="dto">Dati del dipendente da creare.</param>
-        /// <returns>Identificativo del dipendente creato oppure null in caso di errore HTTP.</returns>
+        /// <inheritdoc/>
         public async Task<short?> CreateEmployeeAsync(CreateEmployeeDto dto)
         {
             var response = await _httpClient.PostAsJsonAsync("api/employees", dto);

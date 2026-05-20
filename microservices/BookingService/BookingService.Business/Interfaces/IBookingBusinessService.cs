@@ -3,36 +3,33 @@
 namespace BookingService.Business.Interfaces
 {
     /// <summary>
-    /// Definisce i servizi di business relativi alla gestione delle prenotazioni.
+    /// Servizio di business per la gestione delle operazioni relative alle prenotazioni.
     /// </summary>
+    /// <remarks>
+    /// Questo layer contiene la logica applicativa che coordina repository,
+    /// validazioni e regole di dominio per la gestione del "BookingService".
+    /// </remarks>
     public interface IBookingBusinessService
     {
         /// <summary>
-        /// Recupera l'elenco completo delle prenotazioni.
+        /// Recupera tutti le prenotazioni presenti nel sistema.
         /// </summary>
-        /// <returns>
-        /// Una collezione di oggetti <see cref="BookingDto"/> contenenti i dati delle prenotazioni.
-        /// </returns>
+        /// <returns>Una collezione di <see cref="BookingDto"/> disponibili.</returns>
         Task<IEnumerable<BookingDto>> GetAllBookingsAsync();
 
         /// <summary>
-        /// Recupera una prenotazione tramite il relativo identificativo.
+        /// Recupera una prenotazione tramite identificativo.
         /// </summary>
-        /// <param name="id">
-        /// Identificativo univoco della prenotazione.
-        /// </param>
+        /// <param name="id">Identificativo univoco della prenotazione.</param>
         /// <returns>
-        /// Un oggetto <see cref="BookingDto"/> se la prenotazione esiste;
-        /// altrimenti <c>null</c>.
+        /// Il <see cref="BookingDto"/> corrispondente se trovato, altrimenti <c>null</c>.
         /// </returns>
         Task<BookingDto?> GetBookingByIdAsync(short id);
 
         /// <summary>
-        /// Crea una nuova prenotazione.
+        /// Crea una nuova prenotazione nel sistema.
         /// </summary>
-        /// <param name="dto">
-        /// Oggetto contenente i dati necessari alla creazione della prenotazione.
-        /// </param>
+        /// <param name="dto">Dati necessari per la creazione della prenotazione.</param>
         /// <returns>
         /// L'identificativo della prenotazione creata.
         /// </returns>

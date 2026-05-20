@@ -23,7 +23,7 @@
         public double KilometersTraveled { get; init; }
 
         /// <summary>
-        /// Data e ora di pubblicazione dell'evento in formato UTC.
+        /// Data e ora di pubblicazione dell'evento.
         /// </summary>
         public DateTime Timestamp { get; init; }
     }

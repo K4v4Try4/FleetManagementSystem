@@ -3,30 +3,32 @@
 namespace BookingService.Repository.Interfaces
 {
     /// <summary>
-    /// Definisce le operazioni di accesso ai dati per l'entità <see cref="Booking"/>.
-    /// Espone metodi per operazioni CRUD e query specifiche.
+    /// Repository per la gestione delle entità <see cref="Booking"/>.
     /// </summary>
+    /// <remarks>
+    /// Espone le operazioni di accesso ai dati per la gestione delle prenotazioni.
+    /// </remarks>
     public interface IBookingRepository
     {
         /// <summary>
-        /// Recupera una prenotazione tramite identificativo.
+        /// Recupera una prenotazione tramite il suo identificativo.
         /// </summary>
-        /// <param name="id">Identificativo della prenotazione.</param>
+        /// <param name="id">Identificativo univoco della prenotazione.</param>
         /// <returns>
-        /// L'entità <see cref="Booking"/> se trovata; altrimenti <c>null</c>.
+        /// L'entità <see cref="Booking"/> se trovata, altrimenti <c>null</c>.
         /// </returns>
         Task<Booking> GetByIdAsync(short id);
 
         /// <summary>
         /// Recupera tutte le prenotazioni presenti nel sistema.
         /// </summary>
-        /// <returns>Collezione di entità <see cref="Booking"/>.</returns>
+        /// <returns>Una collezione di tutte le entità <see cref="Booking"/>.</returns>
         Task<IEnumerable<Booking>> GetAllAsync();
 
         /// <summary>
-        /// Aggiunge una nuova prenotazione al repository.
+        /// Aggiunge una nuova prenotazione al sistema.
         /// </summary>
-        /// <param name="booking">Entità da inserire.</param>
+        /// <param name="booking">Entità <see cref="Booking"/> da inserire.</param>
         Task AddAsync(Booking booking);
 
         /// <summary>
@@ -45,8 +47,12 @@ namespace BookingService.Repository.Interfaces
         Task<bool> HasActiveBookingAsync(short employeeId);
 
         /// <summary>
-        /// Persiste le modifiche pendenti sul database.
+        /// Persiste tutte le modifiche pendenti sul database.
         /// </summary>
+        /// <remarks>
+        /// Deve essere chiamato dopo operazioni di inserimento o aggiornamento
+        /// per rendere persistenti le modifiche.
+        /// </remarks>
         Task SaveChangesAsync();
     }
 }

@@ -8,7 +8,7 @@ namespace CarService.Business.Interfaces
     /// </summary>
     /// <remarks>
     /// Questo layer contiene la logica applicativa che coordina repository,
-    /// validazioni e regole di dominio per la gestione del "CarSharing".
+    /// validazioni e regole di dominio per la gestione del "CarService".
     /// </remarks>
     public interface ICarBusinessService
     {
@@ -48,10 +48,6 @@ namespace CarService.Business.Interfaces
         /// </summary>
         /// <param name="carId">Identificativo del veicolo coinvolto.</param>
         /// <param name="kmTraveled">Chilometri percorsi durante il viaggio.</param>
-        /// <remarks>
-        /// Metodo critico che aggiorna il chilometraggio del veicolo e può
-        /// attivare logiche di business come cambio stato o eventi di dominio.
-        /// </remarks>
         Task ProcessTripCompletionAsync(short carId, double kmTraveled);
     }
 }

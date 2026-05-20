@@ -7,9 +7,12 @@ using EmployeeService.Shared.Events;
 namespace EmployeeService.Business.Services
 {
     /// <summary>
-    /// Implementazione del servizio di business per la gestione degli Employee.
-    /// Coordina repository, mapping DTO e pubblicazione eventi su Kafka.
+    /// Implementazione del servizio di business per la gestione dei dipendenti.
     /// </summary>
+    /// <remarks>
+    /// Questo servizio contiene la logica applicativa principale del dominio EmployeeService,
+    /// orchestrando le operazioni tra repository e DTO e applicando le regole di business.
+    /// </remarks>
     public class EmployeeBusinessService : IEmployeeBusinessService
     {
         private readonly IEmployeeRepository _repository;
@@ -20,17 +23,13 @@ namespace EmployeeService.Business.Services
         /// </summary>
         /// <param name="repository">Repository per accesso ai dati Employee.</param>
         /// <param name="eventProducer">Producer per la pubblicazione eventi Kafka.</param>
-        public EmployeeBusinessService(
-            IEmployeeRepository repository,
-            IEmployeeEventProducer eventProducer)
+        public EmployeeBusinessService(IEmployeeRepository repository, IEmployeeEventProducer eventProducer)
         {
             _repository = repository;
             _eventProducer = eventProducer;
         }
 
-        /// <summary>
-        /// Recupera tutti i dipendenti e li mappa in DTO.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync()
         {
             var employees = await _repository.GetAllAsync();
@@ -39,9 +38,7 @@ namespace EmployeeService.Business.Services
                 new EmployeeDto(e.Id, e.Name, e.Role, e.Email, e.Eligibility));
         }
 
-        /// <summary>
-        /// Recupera un dipendente tramite ID e lo converte in DTO.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task<EmployeeDto?> GetEmployeeByIdAsync(short id)
         {
             var e = await _repository.GetByIdAsync(id);
@@ -51,11 +48,7 @@ namespace EmployeeService.Business.Services
                 : new EmployeeDto(e.Id, e.Name, e.Role, e.Email, e.Eligibility);
         }
 
-        /// <summary>
-        /// Crea un nuovo dipendente, lo salva nel database e pubblica un evento Kafka.
-        /// </summary>
-        /// <param name="dto">Dati del dipendente da creare.</param>
-        /// <returns>Identificativo del dipendente creato.</returns>
+        /// <inheritdoc/>
         public async Task<short> CreateEmployeeAsync(CreateEmployeeDto dto)
         {
             // Mapping DTO -> Entity
@@ -82,9 +75,7 @@ namespace EmployeeService.Business.Services
             return employee.Id;
         }
 
-        /// <summary>
-        /// Regola di business: verifica se un dipendente è idoneo alla guida.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task<bool> IsEmployeeEligibleForDrivingAsync(short id)
         {
             var employee = await _repository.GetByIdAsync(id);

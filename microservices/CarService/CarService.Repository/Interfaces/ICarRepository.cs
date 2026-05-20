@@ -1,5 +1,4 @@
 ﻿using CarService.Shared.Entities;
-using CarService.Shared.Enums;
 
 namespace CarService.Repository.Interfaces
 {
@@ -7,9 +6,7 @@ namespace CarService.Repository.Interfaces
     /// Repository per la gestione delle entità <see cref="Car"/>.
     /// </summary>
     /// <remarks>
-    /// Espone le operazioni di accesso ai dati per la gestione delle auto,
-    /// includendo operazioni di lettura, inserimento e aggiornamento mirato
-    /// di stato e chilometraggio.
+    /// Espone le operazioni di accesso ai dati per la gestione delle auto.
     /// </remarks>
     public interface ICarRepository
     {
@@ -45,7 +42,7 @@ namespace CarService.Repository.Interfaces
         /// Aggiorna il chilometraggio di un veicolo.
         /// </summary>
         /// <param name="id">Identificativo del veicolo da aggiornare.</param>
-        /// <param name="newMileage">Nuovo valore di chilometraggio in chilometri.</param>
+        /// <param name="newMileage">Nuovo valore dei chilometri.</param>
         Task UpdateMileageAsync(short id, double newMileage);
 
         /// <summary>

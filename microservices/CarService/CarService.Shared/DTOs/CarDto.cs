@@ -4,8 +4,7 @@
     /// Data Transfer Object che rappresenta un veicolo.
     /// </summary>
     /// <remarks>
-    /// Questo DTO viene utilizzato per trasferire informazioni sull'auto
-    /// tra i vari livelli dell'applicazione (API, servizi, client).
+    /// Questo DTO viene utilizzato per trasferire informazioni sull'auto.
     /// </remarks>
     public record CarDto(
         /// <summary>

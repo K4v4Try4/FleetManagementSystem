@@ -2,18 +2,34 @@
 {
     /// <summary>
     /// Data Transfer Object che rappresenta un dipendente.
-    /// Usato per trasferire dati tra livelli dell'applicazione (API, service, client).
     /// </summary>
-    /// <param name="Id">Identificativo univoco del dipendente.</param>
-    /// <param name="Name">Nome completo del dipendente.</param>
-    /// <param name="Role">Ruolo o posizione lavorativa del dipendente.</param>
-    /// <param name="Email">Indirizzo email del dipendente.</param>
-    /// <param name="Eligibility">Indica se il dipendente è abilitato/idoneo.</param>
+    /// <remarks>
+    /// Questo DTO viene utilizzato per trasferire informazioni sull'auto.
+    /// </remarks>
     public record EmployeeDto(
+        /// <summary>
+        /// Identificativo univoco del dipendente.
+        /// </summary>
         short Id,
+
+        /// <summary>
+        /// Nome del dipendente.
+        /// </summary>
         string Name,
+
+        /// <summary>
+        /// Posizione lavorativa del dipendente.
+        /// </summary>
         string Role,
+
+        /// <summary>
+        /// Indirizzo email del dipendente.
+        /// </summary>
         string Email,
+
+        /// <summary>
+        /// Indica se il dipendente è abilitato alla guida.
+        /// </summary>
         bool Eligibility
     );
 }

@@ -3,14 +3,16 @@
 namespace BookingService.Shared.Enums
 {
     /// <summary>
-    /// Definisce i possibili stati di una prenotazione
-    /// durante il suo ciclo di vita.
+    /// Definisce i possibili stati di una prenotazione.
     /// </summary>
+    /// <remarks>
+    /// Questo enum è utilizzato per tracciare lo stato di una prenotazione.
+    /// I valori sono serializzati come stringhe tramite l'attributo <see cref="EnumMemberAttribute"/>.
+    /// </remarks>
     public enum BookingStatus
     {
         /// <summary>
-        /// Indica che la prenotazione è attiva,
-        /// in corso oppure programmata per il futuro.
+        /// Indica che la prenotazione è attiva.
         /// </summary>
         [EnumMember(Value = "ACTIVE")]
         ACTIVE,

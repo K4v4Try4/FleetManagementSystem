@@ -9,7 +9,7 @@ namespace CarService.ClientHttp.Interfaces
     /// <remarks>
     /// Questa interfaccia definisce le operazioni disponibili per comunicare
     /// con le API del servizio di gestione veicoli, tipicamente utilizzata
-    /// da layer esterni (frontend, gateway o altri microservizi).
+    /// da layer esterni.
     /// </remarks>
     public interface ICarClient
     {
@@ -19,9 +19,6 @@ namespace CarService.ClientHttp.Interfaces
         /// <returns>
         /// Una collezione di <see cref="CarDto"/> oppure <c>null</c> in caso di errore.
         /// </returns>
-        /// <remarks>
-        /// Utilizzato principalmente per la visualizzazione della flotta.
-        /// </remarks>
         Task<IEnumerable<CarDto>?> GetCarsAsync();
 
         /// <summary>
@@ -31,9 +28,6 @@ namespace CarService.ClientHttp.Interfaces
         /// <returns>
         /// Il <see cref="CarDto"/> corrispondente oppure <c>null</c> se non trovato.
         /// </returns>
-        /// <remarks>
-        /// Utilizzato per verifiche prima di operazioni come prenotazioni.
-        /// </remarks>
         Task<CarDto?> GetCarByIdAsync(short id);
 
         /// <summary>
@@ -53,9 +47,6 @@ namespace CarService.ClientHttp.Interfaces
         /// <returns>
         /// <c>true</c> se l'operazione è andata a buon fine, altrimenti <c>false</c>.
         /// </returns>
-        /// <remarks>
-        /// Esempi di stato: AVAILABLE, IN_USE, MAINTENANCE.
-        /// </remarks>
         Task<bool> UpdateCarStatusAsync(short id, string status);
     }
 }

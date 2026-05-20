@@ -8,7 +8,7 @@ namespace CarService.WebApi.Controllers
     /// Controller REST per la gestione delle operazioni sui veicoli.
     /// </summary>
     /// <remarks>
-    /// Espone endpoint HTTP per la gestione della flotta (CRUD e aggiornamenti parziali).
+    /// Espone endpoint HTTP per la gestione delle auto (CRUD e aggiornamenti parziali).
     /// La logica applicativa è delegata al layer <see cref="ICarBusinessService"/>.
     /// Include gestione delle eccezioni con logging e mapping verso codici HTTP appropriati.
     /// </remarks>

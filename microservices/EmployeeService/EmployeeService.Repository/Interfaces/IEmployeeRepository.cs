@@ -11,31 +11,35 @@ namespace EmployeeService.Repository.Interfaces
         /// <summary>
         /// Recupera tutti i dipendenti presenti nel sistema.
         /// </summary>
-        /// <returns>Una collezione di Employee.</returns>
+        /// <returns>Una collezione di tutte le entità <see cref="Employee"/>.</returns>
         Task<IEnumerable<Employee>> GetAllAsync();
 
         /// <summary>
         /// Recupera un dipendente tramite il suo identificativo.
         /// </summary>
         /// <param name="id">Identificativo del dipendente.</param>
-        /// <returns>Un Employee se trovato, altrimenti null.</returns>
+        /// L'entità <see cref="Employee"/> se trovata, altrimenti <c>null</c>.
         Task<Employee?> GetByIdAsync(short id);
 
         /// <summary>
-        /// Aggiunge un nuovo dipendente al repository.
+        /// Aggiunge un nuovo dipendente al sistema.
         /// </summary>
-        /// <param name="employee">Entità Employee da inserire.</param>
+        /// <param name="car">Entità <see cref="Employee"/> da inserire.</param>
         Task AddAsync(Employee employee);
 
         /// <summary>
         /// Aggiorna un dipendente esistente nel repository.
         /// </summary>
-        /// <param name="employee">Entità Employee con dati aggiornati.</param>
+        /// <param name="car">Entità <see cref="Employee"/> da aggiornare.</param>
         Task UpdateAsync(Employee employee);
 
         /// <summary>
-        /// Persiste le modifiche effettuate nel contesto dati.
+        /// Persiste tutte le modifiche pendenti sul database.
         /// </summary>
+        /// <remarks>
+        /// Deve essere chiamato dopo operazioni di inserimento o aggiornamento
+        /// per rendere persistenti le modifiche.
+        /// </remarks>
         Task SaveChangesAsync();
     }
 }

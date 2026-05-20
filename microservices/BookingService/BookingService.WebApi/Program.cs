@@ -13,48 +13,40 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/// <summary>
-/// Configurazione dell'applicazione BookingService.
-/// Registra dipendenze, database, client HTTP e middleware.
-/// </summary>
+// Database
+builder.Services.AddDbContext<BookingDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 1. Configurazione Database (SQL Server)
-builder.Services.AddDbContext<BookingDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// 2. Registrazione Client HTTP (comunicazione sincrona con servizi esterni)
+// HTTP clients (sync integration with external services)
 builder.Services.AddHttpClient<ICarClient, CarClient>(client =>
 {
-    client.BaseAddress = new Uri(builder.Configuration["ExternalServices:CarServiceUrl"]
-        ?? "http://localhost:5001");
+    client.BaseAddress = new Uri(builder.Configuration["ExternalServices:CarServiceUrl"] ?? "http://localhost:5001");
 });
 
 builder.Services.AddHttpClient<IEmployeeClient, EmployeeClient>(client =>
 {
-    client.BaseAddress = new Uri(builder.Configuration["ExternalServices:EmployeeServiceUrl"]
-        ?? "http://localhost:5002");
+    client.BaseAddress = new Uri(builder.Configuration["ExternalServices:EmployeeServiceUrl"] ?? "http://localhost:5002");
 });
 
-// 3. Dependency Injection: Repository e Business Layer
+// Dependency Injection
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 builder.Services.AddScoped<IBookingBusinessService, BookingBusinessService>();
 
-// 4. Kafka Producer (comunicazione asincrona event-driven)
+// Eventing (Kafka)
 builder.Services.AddSingleton<IBookingEventProducer, BookingEventProducer>();
 
-// 5. Controller + configurazione JSON
+// Controllers + JSON config
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    // Serializzazione enum come stringhe (es. ACTIVE invece di 0)
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// 6. Pipeline HTTP
+// Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -65,7 +57,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// 7. Applicazione automatica migrazioni database al bootstrap
+// DB migrations at startup
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<BookingDbContext>();

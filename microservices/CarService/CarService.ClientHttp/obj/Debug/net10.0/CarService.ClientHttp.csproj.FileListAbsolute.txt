@@ -13,3 +13,4 @@ C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService
 C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.ClientHttp\obj\Debug\net10.0\refint\CarService.ClientHttp.dll
 C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.ClientHttp\obj\Debug\net10.0\CarService.ClientHttp.pdb
 C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.ClientHttp\obj\Debug\net10.0\ref\CarService.ClientHttp.dll
+C:\Users\cavel\Desktop\FleetManagementSystem\microservices\CarService\CarService.ClientHttp\obj\Debug\net10.0\CarService.ClientHttp.sourcelink.json

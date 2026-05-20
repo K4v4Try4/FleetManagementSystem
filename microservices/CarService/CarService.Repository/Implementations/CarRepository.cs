@@ -10,8 +10,7 @@ namespace CarService.Repository.Implementations
     /// Implementazione del repository per la gestione delle entità <see cref="Car"/>.
     /// </summary>
     /// <remarks>
-    /// Questa classe utilizza Entity Framework Core per l'accesso ai dati
-    /// e implementa le operazioni definite in <see cref="ICarRepository"/>.
+    /// Implementa le operazioni definite in <see cref="ICarRepository"/>.
     /// </remarks>
     public class CarRepository : ICarRepository
     {

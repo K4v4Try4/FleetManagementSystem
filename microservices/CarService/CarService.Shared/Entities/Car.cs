@@ -25,14 +25,13 @@ namespace CarService.Shared.Entities
         /// <summary>
         /// Stato attuale del veicolo.
         /// </summary>
-        /// <remarks>
         public required CarStatus Status { get; set; }
 
         /// <summary>
         /// Chilometraggio totale del veicolo.
         /// </summary>
         /// <remarks>
-        /// Espresso in chilometri. Il valore predefinito è 0.0 e rappresenta un veicolo nuovo o senza percorrenza registrata.
+        /// Espresso in chilometri. Il valore predefinito è 0.0.
         /// </remarks>
         public required double Mileage { get; set; } = 0.0;
     }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FleetManagementSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7b0ed6560a7b1174d18296e363cbe4da5c12b88")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49ae87f0f8339c6df578a5d782ba52d4cf0388e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarService.ClientHttp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarService.ClientHttp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

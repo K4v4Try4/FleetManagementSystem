@@ -3,7 +3,7 @@
 namespace CarService.Shared.Enums
 {
     /// <summary>
-    /// Rappresenta lo stato operativo di un veicolo all'interno del sistema.
+    /// Rappresenta lo stato operativo di un veicolo.
     /// </summary>
     /// <remarks>
     /// Questo enum è utilizzato per tracciare la disponibilità e l'utilizzo di un'auto.

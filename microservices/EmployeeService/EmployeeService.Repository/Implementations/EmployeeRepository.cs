@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore;
 namespace EmployeeService.Repository.Implementations
 {
     /// <summary>
-    /// Implementazione concreta del repository per l'entità Employee.
-    /// Utilizza Entity Framework Core per la persistenza dei dati.
+    /// Implementazione del repository per la gestione delle entità <see cref="Employee"/>.
     /// </summary>
+    /// <remarks>
+    /// Implementa le operazioni definite in <see cref="IEmployeeRepository"/>.
+    /// </remarks>
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly EmployeeDbContext _context;
@@ -16,44 +18,31 @@ namespace EmployeeService.Repository.Implementations
         /// <summary>
         /// Inizializza una nuova istanza del repository.
         /// </summary>
-        /// <param name="context">Contesto EF Core per l'accesso al database.</param>
+        /// <param name="context">
+        /// Contesto EF Core utilizzato per l'accesso al database.
+        /// </param>
         public EmployeeRepository(EmployeeDbContext context)
         {
             _context = context;
         }
 
-        /// <summary>
-        /// Recupera tutti i dipendenti dal database.
-        /// </summary>
-        /// <returns>Collezione di Employee.</returns>
+        /// <inheritdoc/>
         public async Task<IEnumerable<Employee>> GetAllAsync() => await _context.Employees.ToListAsync();
 
-        /// <summary>
-        /// Recupera un dipendente tramite ID.
-        /// </summary>
-        /// <param name="id">Identificativo del dipendente.</param>
-        /// <returns>Employee se trovato, altrimenti null.</returns>
+        /// <inheritdoc/>
         public async Task<Employee?> GetByIdAsync(short id) => await _context.Employees.FindAsync(id);
 
-        /// <summary>
-        /// Aggiunge un nuovo dipendente al contesto di persistenza.
-        /// </summary>
-        /// <param name="employee">Entità da inserire.</param>
+        /// <inheritdoc/>
         public async Task AddAsync(Employee employee) => await _context.Employees.AddAsync(employee);
 
-        /// <summary>
-        /// Aggiorna un dipendente esistente nel contesto.
-        /// </summary>
-        /// <param name="employee">Entità con valori aggiornati.</param>
+        /// <inheritdoc/>
         public async Task UpdateAsync(Employee employee)
         {
             _context.Employees.Update(employee);
             await Task.CompletedTask;
         }
 
-        /// <summary>
-        /// Salva tutte le modifiche pendenti nel database.
-        /// </summary>
+        /// <inheritdoc/>
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
     }
 }

@@ -4,8 +4,7 @@
     /// Evento che rappresenta il completamento di un viaggio.
     /// </summary>
     /// <remarks>
-    /// Questo evento viene pubblicato quando una corsa termina con successo
-    /// e contiene le informazioni necessarie per aggiornare lo stato del veicolo
+    /// Questo evento viene pubblicato quando una corsa termina con successo.
     /// </remarks>
     public record TripCompletedEvent
     {

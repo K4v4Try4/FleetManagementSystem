@@ -1,0 +1,15 @@
+init : serve al posto del ser per creare oggetti immutabili
+
+API REST
+
+classe ILogger
+
+required negli attributi
+
+message broker
+
+@event
+
+migliorie:
+    - la targa non si può ripetere oppure essere univoca con l'id
+    - la creazione automatica dell'email usando il nome e il ruolo

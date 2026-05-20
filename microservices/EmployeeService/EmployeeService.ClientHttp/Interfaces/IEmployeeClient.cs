@@ -3,22 +3,28 @@
 namespace EmployeeService.ClientHttp.Interfaces
 {
     /// <summary>
-    /// Client HTTP per l'interazione con il servizio Employee.
-    /// Incapsula le chiamate verso le API del microservizio.
+    /// Client HTTP per l'interazione con il servizio EmployeeService.
     /// </summary>
+    /// <remarks>
+    /// Questa interfaccia definisce le operazioni disponibili per comunicare
+    /// con le API del servizio di gestione dipendenti, tipicamente utilizzata
+    /// da layer esterni.
+    /// </remarks>
     public interface IEmployeeClient
     {
         /// <summary>
         /// Recupera la lista di tutti i dipendenti dal servizio remoto.
         /// </summary>
-        /// <returns>Collezione di EmployeeDto oppure null in caso di errore.</returns>
+        /// Una collezione di <see cref="EmployeeDto"/> oppure <c>null</c> in caso di errore.
         Task<IEnumerable<EmployeeDto>?> GetEmployeesAsync();
 
         /// <summary>
-        /// Recupera un dipendente tramite ID.
+        /// Recupera i dettagli di un dipendente tramite identificativo.
         /// </summary>
-        /// <param name="id">Identificativo del dipendente.</param>
-        /// <returns>EmployeeDto se trovato, altrimenti null.</returns>
+        /// <param name="id">Identificativo univoco del dipendente.</param>
+        /// <returns>
+        /// Il <see cref="EmployeeDto"/> corrispondente oppure <c>null</c> se non trovato.
+        /// </returns>
         Task<EmployeeDto?> GetEmployeeByIdAsync(short id);
 
         /// <summary>
@@ -29,10 +35,12 @@ namespace EmployeeService.ClientHttp.Interfaces
         Task<bool> GetEmployeeEligibilityAsync(short id);
 
         /// <summary>
-        /// Crea un nuovo dipendente tramite API remota.
+        /// Crea un nuovo dipendente nel sistema.
         /// </summary>
-        /// <param name="dto">Dati del dipendente da creare.</param>
-        /// <returns>Identificativo del dipendente creato oppure null in caso di errore.</returns>
+        /// <param name="dto">Dati necessari alla creazione del dipendente.</param>
+        /// <returns>
+        /// Il <see cref="CreateEmployeeDto"/> restituito dal servizio oppure <c>null</c> in caso di errore.
+        /// </returns>
         Task<short?> CreateEmployeeAsync(CreateEmployeeDto dto);
     }
 }

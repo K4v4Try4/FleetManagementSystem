@@ -4,19 +4,15 @@ using Microsoft.EntityFrameworkCore;
 namespace CarService.Repository.Persistence
 {
     /// <summary>
-    /// Contesto Entity Framework Core per la gestione delle entità del dominio di "CarSharing".
+    /// DbContext di Entity Framework Core per la gestione del modulo CarService.
     /// </summary>
-    /// <remarks>
-    /// Questo DbContext gestisce la connessione al database e la configurazione
-    /// del modello dati relativo alle entità del servizio.
-    /// </remarks>
     public class CarDbContext : DbContext
     {
         /// <summary>
         /// Inizializza una nuova istanza del contesto con le opzioni specificate.
         /// </summary>
         /// <param name="options">
-        /// Opzioni di configurazione del DbContext (connection string, provider, ecc.).
+        /// Opzioni di configurazione del DbContext.
         /// </param>
         public CarDbContext(DbContextOptions<CarDbContext> options) : base(options) { }
 
@@ -31,19 +27,13 @@ namespace CarService.Repository.Persistence
         /// <param name="modelBuilder">
         /// Builder utilizzato per configurare mapping, vincoli e conversioni.
         /// </param>
-        /// <remarks>
-        /// In questo metodo vengono definite:
-        /// - chiave primaria dell'entità Car
-        /// - vincoli sulle proprietà (required, lunghezze massime)
-        /// - conversione dell'enum CarStatus in stringa nel database
-        /// </remarks>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configurazione della tabella Car
             modelBuilder.Entity<Car>(entity =>
             {
                 /// <summary>
-                /// Definisce la chiave primaria dell'entità Car.
+                /// Definisce la chiave primaria.
                 /// </summary>
                 entity.HasKey(e => e.Id);
 
@@ -60,17 +50,11 @@ namespace CarService.Repository.Persistence
                 /// <summary>
                 /// Stato del veicolo obbligatorio e salvato come stringa nel database.
                 /// </summary>
-                /// <remarks>
-                /// Permette maggiore leggibilità dei dati rispetto al valore numerico dell'enum.
-                /// </remarks>
                 entity.Property(e => e.Status).IsRequired().HasConversion<string>();
 
                 /// <summary>
-                /// Configura la proprietà <c>Mileage</c> dell'entità Car.
+                /// Chilometraggio del veicolo obbligatorio.
                 /// </summary>
-                /// <remarks>
-                /// La proprietà è obbligatoria e rappresenta il chilometraggio del veicolo.
-                /// </remarks>
                 entity.Property(e => e.Mileage).IsRequired();
             });
         }

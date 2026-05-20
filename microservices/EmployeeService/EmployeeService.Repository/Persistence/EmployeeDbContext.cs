@@ -4,43 +4,56 @@ using Microsoft.EntityFrameworkCore;
 namespace EmployeeService.Repository.Persistence
 {
     /// <summary>
-    /// Contesto del database per il servizio Employee.
-    /// Gestisce la configurazione delle entità e la connessione al database tramite Entity Framework Core.
+    /// DbContext di Entity Framework Core per la gestione del modulo EmployeeService.
     /// </summary>
     public class EmployeeDbContext : DbContext
     {
         /// <summary>
-        /// Inizializza una nuova istanza del contesto.
+        /// Inizializza una nuova istanza del contesto con le opzioni specificate.
         /// </summary>
-        /// <param name="options">Opzioni di configurazione del DbContext.</param>
+        /// <param name="options">
+        /// Opzioni di configurazione del DbContext.
+        /// </param>
         public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options) : base(options) { }
 
         /// <summary>
-        /// Tabella degli Employee nel database.
+        /// Rappresenta la tabella dei dipendenti nel database.
         /// </summary>
         public DbSet<Employee> Employees { get; set; }
 
         /// <summary>
-        /// Configura il modello delle entità e le relative regole di mapping.
+        /// Configura il modello delle entità quando il contesto viene creato.
         /// </summary>
-        /// <param name="modelBuilder">Builder utilizzato per configurare le entità.</param>
+        /// <param name="modelBuilder">
+        /// Builder utilizzato per configurare mapping, vincoli e conversioni.
+        /// </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>(entity =>
             {
-                /// Configurazione chiave primaria
+                /// <summary>
+                /// Definisce la chiave primaria.
+                /// </summary>
                 entity.HasKey(e => e.Id);
 
-                /// Configurazione proprietà Name
+                /// <summary>
+                /// Nome obbligartorio del dipendente con lunghezza massima di 100 caratteri.
+                /// </summary>
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
 
-                /// Configurazione proprietà Role
+                /// <summary>
+                /// Posizione obbligartoria del dipendente con lunghezza massima di 50 caratteri.
+                /// </summary>
                 entity.Property(e => e.Role).IsRequired().HasMaxLength(50);
 
-                /// Configurazione proprietà Email
+                /// <summary>
+                /// Indirizzo email obbligatorio del dipendente con lunghezza massima di 100 caratteri.
+                /// </summary>
                 entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
 
-                /// Configurazione proprietà Eligibility
+                /// <summary>
+                /// Proprietà obbligatoria di abilita alla guida del dipendente.
+                /// </summary>
                 entity.Property(e => e.Eligibility).IsRequired();
             });
         }
