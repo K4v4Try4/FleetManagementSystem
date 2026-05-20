@@ -302,3 +302,180 @@ Il progetto è gestito tramite GitHub per favorire la collaborazione e il contro
 Il **Booking Service è il cuore del sistema**:
 
 coordina i flussi e mantiene la logica principale.
+
+---
+
+## 📁 Struttura del Progetto
+
+```
+📁 FleetManagementSystem/
+├── 📁 .github/
+│   └── 📁 workflows/
+│       ├── 📄 docker-publish.yml
+│       └── 📄 nuget-publish.yml
+├── 📄 README.md
+├── 📄 appunti.txt
+├── 📄 comandi_codice.txt
+├── 📄 nuget.config
+├── 📁 nuget-packages/
+│   ├── 📄 CarService.ClientHttp.1.0.0.nupkg
+│   ├── 📄 CarService.Shared.1.0.0.nupkg
+│   ├── 📄 EmployeeService.ClientHttp.1.0.0.nupkg
+│   └── 📄 EmployeeService.Shared.1.0.0.nupkg
+└── 📁 microservices/
+    ├── 📄 .env
+    ├── 📄 docker-compose.yml
+    │
+    ├── 📁 BookingService/
+    │   ├── 📄 .dockerignore
+    │   ├── 📄 BookingService.slnx
+    │   ├── 📁 BookingService.Business/
+    │   │   ├── 📄 BookingService.Business.csproj
+    │   │   ├── 📁 Interfaces/
+    │   │   │   ├── 📄 IBookingBusinessService.cs
+    │   │   │   └── 📄 IBookingEventProducer.cs
+    │   │   ├── 📁 Kafka/
+    │   │   │   └── 📄 BookingEventProducer.cs
+    │   │   └── 📁 Services/
+    │   │       └── 📄 BookingBusinessService.cs
+    │   ├── 📁 BookingService.ClientHttp/
+    │   │   ├── 📄 BookingService.ClientHttp.csproj
+    │   │   ├── 📁 Implementations/
+    │   │   │   └── 📄 BookingClient.cs
+    │   │   └── 📁 Interfaces/
+    │   │       └── 📄 IBookingClient.cs
+    │   ├── 📁 BookingService.Repository/
+    │   │   ├── 📄 BookingService.Repository.csproj
+    │   │   ├── 📁 Implementations/
+    │   │   │   └── 📄 BookingRepository.cs
+    │   │   ├── 📁 Interfaces/
+    │   │   │   └── 📄 IBookingRepository.cs
+    │   │   ├── 📁 Migrations/
+    │   │   │   ├── 📄 20260513072622_InitialCreateBooking.Designer.cs
+    │   │   │   ├── 📄 20260513072622_InitialCreateBooking.cs
+    │   │   │   └── 📄 BookingDbContextModelSnapshot.cs
+    │   │   └── 📁 Persistence/
+    │   │       └── 📄 BookingDbContext.cs
+    │   ├── 📁 BookingService.Shared/
+    │   │   ├── 📄 BookingService.Shared.csproj
+    │   │   ├── 📁 DTOs/
+    │   │   │   ├── 📄 BookingCreateDto.cs
+    │   │   │   └── 📄 BookingDto.cs
+    │   │   ├── 📁 Entities/
+    │   │   │   └── 📄 Booking.cs
+    │   │   ├── 📁 Enums/
+    │   │   │   └── 📄 BookingStatus.cs
+    │   │   └── 📁 Events/
+    │   │       └── 📄 TripCompletedEvent.cs
+    │   └── 📁 BookingService.WebApi/
+    │       ├── 📄 BookingService.WebApi.csproj
+    │       ├── 📄 Dockerfile
+    │       ├── 📄 Program.cs
+    │       ├── 📄 appsettings.json
+    │       ├── 📄 appsettings.Development.json
+    │       ├── 📁 Controllers/
+    │       │   └── 📄 BookingsController.cs
+    │       └── 📁 Properties/
+    │           └── 📄 launchSettings.json
+    │
+    ├── 📁 CarService/
+    │   ├── 📄 .dockerignore
+    │   ├── 📄 CarService.slnx
+    │   ├── 📁 CarService.Business/
+    │   │   ├── 📄 CarService.Business.csproj
+    │   │   ├── 📁 Interfaces/
+    │   │   │   └── 📄 ICarBusinessService.cs
+    │   │   ├── 📁 Kafka/
+    │   │   │   └── 📄 TripCompletedConsumer.cs
+    │   │   └── 📁 Services/
+    │   │       └── 📄 CarBusinessService.cs
+    │   ├── 📁 CarService.ClientHttp/
+    │   │   ├── 📄 CarService.ClientHttp.csproj
+    │   │   ├── 📁 Implementations/
+    │   │   │   └── 📄 CarClient.cs
+    │   │   └── 📁 Interfaces/
+    │   │       └── 📄 ICarClient.cs
+    │   ├── 📁 CarService.Repository/
+    │   │   ├── 📄 CarService.Repository.csproj
+    │   │   ├── 📁 Implementations/
+    │   │   │   └── 📄 CarRepository.cs
+    │   │   ├── 📁 Interfaces/
+    │   │   │   └── 📄 ICarRepository.cs
+    │   │   ├── 📁 Migrations/
+    │   │   │   ├── 📄 20260505202453_InitialCreate.Designer.cs
+    │   │   │   ├── 📄 20260505202453_InitialCreate.cs
+    │   │   │   └── 📄 CarDbContextModelSnapshot.cs
+    │   │   └── 📁 Persistence/
+    │   │       └── 📄 CarDbContext.cs
+    │   ├── 📁 CarService.Shared/
+    │   │   ├── 📄 CarService.Shared.csproj
+    │   │   ├── 📁 DTOs/
+    │   │   │   ├── 📄 CarDto.cs
+    │   │   │   └── 📄 CreateCarDto.cs
+    │   │   ├── 📁 Entities/
+    │   │   │   └── 📄 Car.cs
+    │   │   ├── 📁 Enums/
+    │   │   │   └── 📄 CarStatus.cs
+    │   │   └── 📁 Events/
+    │   │       └── 📄 TripCompletedEvent.cs
+    │   └── 📁 CarService.WebApi/
+    │       ├── 📄 CarService.WebApi.csproj
+    │       ├── 📄 Dockerfile
+    │       ├── 📄 Program.cs
+    │       ├── 📄 appsettings.json
+    │       ├── 📄 appsettings.Development.json
+    │       ├── 📁 Controllers/
+    │       │   └── 📄 CarsController.cs
+    │       └── 📁 Properties/
+    │           └── 📄 launchSettings.json
+    │
+    └── 📁 EmployeeService/
+        ├── 📄 .dockerignore
+        ├── 📄 EmployeeService.slnx
+        ├── 📁 EmployeeService.Business/
+        │   ├── 📄 EmployeeService.Business.csproj
+        │   ├── 📁 Interfaces/
+        │   │   ├── 📄 IEmployeeBusinessService.cs
+        │   │   └── 📄 IEmployeeEventProducer.cs
+        │   ├── 📁 Kafka/
+        │   │   └── 📄 EmployeeEventProducer.cs
+        │   └── 📁 Services/
+        │       └── 📄 EmployeeBusinessService.cs
+        ├── 📁 EmployeeService.ClientHttp/
+        │   ├── 📄 EmployeeService.ClientHttp.csproj
+        │   ├── 📁 Implementations/
+        │   │   └── 📄 EmployeeClient.cs
+        │   └── 📁 Interfaces/
+        │       └── 📄 IEmployeeClient.cs
+        ├── 📁 EmployeeService.Repository/
+        │   ├── 📄 EmployeeService.Repository.csproj
+        │   ├── 📁 Implementations/
+        │   │   └── 📄 EmployeeRepository.cs
+        │   ├── 📁 Interfaces/
+        │   │   └── 📄 IEmployeeRepository.cs
+        │   ├── 📁 Migrations/
+        │   │   ├── 📄 20260508120030_InitialCreateEmployee.Designer.cs
+        │   │   ├── 📄 20260508120030_InitialCreateEmployee.cs
+        │   │   └── 📄 EmployeeDbContextModelSnapshot.cs
+        │   └── 📁 Persistence/
+        │       └── 📄 EmployeeDbContext.cs
+        ├── 📁 EmployeeService.Shared/
+        │   ├── 📄 EmployeeService.Shared.csproj
+        │   ├── 📁 DTOs/
+        │   │   ├── 📄 CreateEmployeeDto.cs
+        │   │   └── 📄 EmployeeDto.cs
+        │   ├── 📁 Entities/
+        │   │   └── 📄 Employee.cs
+        │   └── 📁 Events/
+        │       └── 📄 EmployeeCreatedEvent.cs
+        └── 📁 EmployeeService.WebApi/
+            ├── 📄 EmployeeService.WebApi.csproj
+            ├── 📄 Dockerfile
+            ├── 📄 Program.cs
+            ├── 📄 appsettings.json
+            ├── 📄 appsettings.Development.json
+            ├── 📁 Controllers/
+            │   └── 📄 EmployeesController.cs
+            └── 📁 Properties/
+                └── 📄 launchSettings.json
+```
