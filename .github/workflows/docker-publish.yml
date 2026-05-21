@@ -47,3 +47,5 @@ jobs:
           file: microservices/BookingService/BookingService.WebApi/Dockerfile
           push: true
           tags: ghcr.io/${{ env.OWNER }}/bookingservice:latest
+          build-args: |
+            NUGET_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
