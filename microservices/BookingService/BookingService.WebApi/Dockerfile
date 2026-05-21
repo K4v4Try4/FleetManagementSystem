@@ -25,7 +25,10 @@ COPY ["microservices/BookingService/BookingService.Shared/BookingService.Shared.
 COPY ["microservices/BookingService/BookingService.ClientHttp/BookingService.ClientHttp.csproj", "microservices/BookingService/BookingService.ClientHttp/"]
 
 # Esegue il restore utilizzando il token e il file di configurazione specifico
-RUN dotnet restore "microservices/BookingService/BookingService.WebApi/BookingService.WebApi.csproj" --configfile nuget.config
+RUN dotnet restore "microservices/BookingService/BookingService.WebApi/BookingService.WebApi.csproj" \
+    --configfile nuget.config \
+    -p:NuGetAuthorizeConfigKey=GitHub \
+    -p:NuGetAuthToken=$NUGET_AUTH_TOKEN
 
 # Copia tutto il resto del codice sorgente
 COPY ["microservices/BookingService/", "microservices/BookingService/"]
