@@ -31,6 +31,8 @@ jobs:
           file: microservices/CarService/CarService.WebApi/Dockerfile
           push: true
           tags: ghcr.io/${{ env.OWNER }}/carservice:latest
+          build-args: |
+            NUGET_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push EmployeeService
         uses: docker/build-push-action@v5
@@ -39,6 +41,8 @@ jobs:
           file: microservices/EmployeeService/EmployeeService.WebApi/Dockerfile
           push: true
           tags: ghcr.io/${{ env.OWNER }}/employeeservice:latest
+          build-args: |
+            NUGET_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push BookingService
         uses: docker/build-push-action@v5
