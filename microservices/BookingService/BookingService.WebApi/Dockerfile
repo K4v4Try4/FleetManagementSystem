@@ -27,7 +27,7 @@ COPY ["microservices/BookingService/BookingService.ClientHttp/BookingService.Cli
 # Esegue il restore utilizzando il token e il file di configurazione specifico
 RUN dotnet restore "microservices/BookingService/BookingService.WebApi/BookingService.WebApi.csproj" \
     --configfile nuget.config \
-    --verbosity detailed
+    --verbosity detailed 2>&1 || (echo "=== RESTORE FAILED ===" && exit 1)
 
 # Copia tutto il resto del codice sorgente
 COPY ["microservices/BookingService/", "microservices/BookingService/"]
