@@ -52,4 +52,4 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.OWNER }}/bookingservice:latest
           build-args: |
-            NUGET_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+            NUGET_AUTH_TOKEN=${{ secrets.NUGET_TOKEN }}
