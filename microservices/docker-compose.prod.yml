@@ -41,8 +41,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CarDb;User Id=sa;Password=YourStrong@Password;TrustServerCertificate=True;
+      - Kafka__BootstrapServers=kafka:9092 
     depends_on:
       - sqlserver
+      - kafka
 
   employeeservice:
     image: ghcr.io/k4v4try4/employeeservice:latest
@@ -52,8 +54,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=EmployeeDb;User Id=sa;Password=YourStrong@Password;TrustServerCertificate=True;
+      - Kafka__BootstrapServers=kafka:9092 
     depends_on:
       - sqlserver
+      - kafka 
 
   bookingservice:
     image: ghcr.io/k4v4try4/bookingservice:latest
