@@ -55,7 +55,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=EmployeeDb;User Id=sa;Password=YourStrong@Password;TrustServerCertificate=True;
-      - Kafka__BootstrapServers=kafka:9092 
+      - Kafka__BootstrapServers=kafka:9092
+      - KafkaConfig__BootstrapServers=kafka:9092
     depends_on:
       - sqlserver
       - kafka 
