@@ -7,8 +7,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    env:
-      BUILDKIT_PROGRESS: plain
     permissions:
       contents: read
       packages: write
@@ -55,11 +53,3 @@ jobs:
           tags: ghcr.io/${{ env.OWNER }}/bookingservice:latest
           build-args: |
             NUGET_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          provenance: false
-          outputs: type=registry
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          driver-opts: |
-            env.BUILDKIT_PROGRESS=plain
