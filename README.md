@@ -278,33 +278,6 @@ microservizio.Shared
 
 ---
 
-## 🚀 Implementazione GitHub
-
-Il progetto è gestito tramite GitHub per favorire la collaborazione e il controllo di versione:
-
-* **Repository Management:**
-  Gestione del codice sorgente dei microservizi con branch dedicate per feature e bugfix.
-
-* **Collaborazione:**
-  Utilizzo di Pull Request per la revisione del codice prima dell'integrazione nel branch principale.
-
-* **Automazione:**
-  Configurazione di GitHub Actions per l'integrazione continua (CI), inclusi:
-
-  * build automatica dei microservizi
-  * creazione immagini Docker
-  * esecuzione test automatici
-
----
-
-## 🧠 Nota Finale
-
-Il **Booking Service è il cuore del sistema**:
-
-coordina i flussi e mantiene la logica principale.
-
----
-
 ## 📁 Struttura del Progetto
 
 ```
