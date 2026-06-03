@@ -1,45 +1,54 @@
 services:
-  # --- DATABASE: SQL Server ---
+  # --- DATABASE ---
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest  # Immagine ufficiale SQL Server 2022
-    container_name: fleet-db  # Nome esplicito del container
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: fleet-db
     ports:
-      - "1433:1433"  # Espone la porta SQL Server verso l'host
+      - "1433:1433"
     environment:
-      - ACCEPT_EULA=Y  # Accetta la licenza Microsoft
-      - MSSQL_SA_PASSWORD=Your_Password_123  # Password dell'utente SA (attenzione: in produzione usare secrets)
-      - MSSQL_PID=Developer  # Edition Developer (gratuita)
-    networks:
-      - fleet-network  # Rete condivisa tra i servizi
-
-  # --- MESSAGING: Kafka + Zookeeper ---
-  zookeeper:
-    image: confluentinc/cp-zookeeper:latest  # Immagine ufficiale Zookeeper (Confluent)
-    container_name: zookeeper
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181  # Porta client Zookeeper
-      ZOOKEEPER_TICK_TIME: 2000  # Timing interno per il cluster
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Your_Password_123
+      - MSSQL_PID=Developer
     networks:
       - fleet-network
+
+  # --- MESSAGING INFRASTRUCTURE ---
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - fleet-network
+
   kafka:
-    image: confluentinc/cp-kafka:7.3.0   # Broker Kafka
+    image: confluentinc/cp-kafka:7.3.0
     container_name: kafka
     depends_on:
-      - zookeeper  # Kafka necessita Zookeeper per il coordinamento
+      - zookeeper
     ports:
-      - "9092:9092"  # Porta interna per comunicazione tra container
+      - "9092:9092"
     environment:
-      KAFKA_BROKER_ID: 1  # ID univoco del broker
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181  # Endpoint Zookeeper
-      # Listener:
-      # - PLAINTEXT://kafka:9092 -> per comunicazione interna tra container
-      # - PLAINTEXT_HOST://localhost:29092 -> per accesso dall'host
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+      # Listener utilizzato dai container sulla rete Docker
+      # e da eventuali client esterni all'host.
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-      # Mappa i listener ai protocolli
+
+      # Associa ciascun listener al relativo protocollo.
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT  # Comunicazione tra broker
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1  # Replica minima (dev/test)
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+
+      # Fattore di replica minimo adeguato a un ambiente locale
+      # con un solo broker Kafka.
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+      # Consente la creazione automatica dei topic non esistenti.
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+
     healthcheck:
       test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
       interval: 10s
@@ -51,9 +60,13 @@ services:
   kafka-init:
     image: confluentinc/cp-kafka:7.3.0
     container_name: kafka-init
+
+    # Job temporaneo eseguito una sola volta per creare
+    # i topic richiesti dall'applicazione.
     depends_on:
       kafka:
         condition: service_healthy
+
     entrypoint:
       - bash
       - -c
@@ -77,85 +90,114 @@ services:
           --replication-factor 1
 
         echo "Done"
+
     networks:
       - fleet-network
 
-  # --- MICROSERVICE: Car Service ---
+  # --- CAR SERVICE ---
   car-service:
-    image: car-service-api  # Nome immagine custom
+    image: car-service-api
     container_name: car-service-app
+
     build:
-      context: . # Build context (root del progetto)
-      dockerfile: CarService/CarService.WebApi/Dockerfile  # Dockerfile specifico
+      context: .
+      dockerfile: CarService/CarService.WebApi/Dockerfile
+
     ports:
-      - "5000:8080"  # Espone API su localhost:5000
+      - "5000:8080"
+
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development  # Ambiente .NET
-      # Stringa di connessione al database SQL Server
+      - ASPNETCORE_ENVIRONMENT=Development
+
+      # Connessione al database condiviso SQL Server.
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CarDb;User Id=sa;Password=Your_Password_123;TrustServerCertificate=True;
-      - Kafka__BootstrapServers=kafka:9092  # Endpoint Kafka interno
+
+      # Endpoint Kafka raggiungibile tramite DNS Docker.
+      - Kafka__BootstrapServers=kafka:9092
+
     depends_on:
       kafka:
         condition: service_healthy
+
+      # Garantisce che il topic richiesto esista prima dell'avvio.
       kafka-init:
         condition: service_completed_successfully
+
     networks:
       - fleet-network
 
-  # --- MICROSERVICE: Employee Service ---
+  # --- EMPLOYEE SERVICE ---
   employee-service:
-    image: employee-service-api  # Nome immagine custom
+    image: employee-service-api
     container_name: employee-service-app
+
     build:
-      context: . # Build context (root del progetto)
-      dockerfile: EmployeeService/EmployeeService.WebApi/Dockerfile  # Dockerfile specifico
+      context: .
+      dockerfile: EmployeeService/EmployeeService.WebApi/Dockerfile
+
     ports:
-      - "5001:8080"  # Espone API su localhost:5001
+      - "5001:8080"
+
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development  # Ambiente .NET
-      # Stringa di connessione al database SQL Server
+      - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=EmployeeDb;User Id=sa;Password=Your_Password_123;TrustServerCertificate=True;
-      - Kafka__BootstrapServers=kafka:9092  # Endpoint Kafka interno
+      - Kafka__BootstrapServers=kafka:9092
+
     depends_on:
       kafka:
         condition: service_healthy
+
       kafka-init:
         condition: service_completed_successfully
+
     networks:
       - fleet-network
 
-  # --- MICROSERVICE: Booking Service ---
+  # --- BOOKING SERVICE ---
   booking-service:
-    image: booking-service-api  # Nome immagine custom
+    image: booking-service-api
     container_name: booking-service-app
+
     build:
-      context: ../   # ← sale alla root dove c'è nuget.config
+      context: ../
       dockerfile: microservices/BookingService/BookingService.WebApi/Dockerfile
+
       args:
-        # Passa la variabile d'ambiente locale al build di Docker
+        # Token utilizzato durante la build per accedere
+        # a eventuali feed NuGet privati.
         - NUGET_AUTH_TOKEN=${NUGET_AUTH_TOKEN}
+
     ports:
-      - "5002:8080"  # Espone API su localhost:5002
+      - "5002:8080"
+
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development  # Ambiente .NET
-      # Stringa di connessione al database SQL Server
+      - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=BookingDb;User Id=sa;Password=Your_Password_123;TrustServerCertificate=True;
-      - Kafka__BootstrapServers=kafka:9092  # Endpoint Kafka interno
+      - Kafka__BootstrapServers=kafka:9092
+
+      # Comunicazione interna tra microservizi tramite
+      # il DNS fornito dalla rete Docker.
       - ExternalServices__CarServiceUrl=http://car-service:8080
       - ExternalServices__EmployeeServiceUrl=http://employee-service:8080
+
     depends_on:
       kafka:
         condition: service_healthy
+
       kafka-init:
         condition: service_completed_successfully
+
       car-service:
         condition: service_started
+
       employee-service:
         condition: service_started
+
     networks:
       - fleet-network
 
 # --- NETWORKING ---
 networks:
   fleet-network:
-    driver: bridge  # Rete bridge per comunicazione tra container
+    # Rete privata condivisa da tutti i servizi del sistema.
+    driver: bridge 

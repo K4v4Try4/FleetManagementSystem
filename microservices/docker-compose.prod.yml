@@ -2,10 +2,11 @@ version: '3.8'
 
 networks:
   fleet-network:
+    # Rete privata condivisa da tutti i servizi del sistema.
     driver: bridge
 
 services:
-
+  # --- DATABASE ---
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver
@@ -17,6 +18,7 @@ services:
     ports:
       - "1433:1433"
 
+  # --- MESSAGING INFRASTRUCTURE ---
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
@@ -38,8 +40,15 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+      # Listener utilizzato dai container sulla rete Docker.
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+
+      # Fattore di replica minimo adeguato a un ambiente
+      # con un solo broker Kafka.
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+      # Consente la creazione automatica dei topic non esistenti.
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
 
     healthcheck:
@@ -48,6 +57,7 @@ services:
       timeout: 10s
       retries: 5
 
+  # --- CAR SERVICE ---
   car-service:
     image: ghcr.io/k4v4try4/carservice:latest
     container_name: car-service
@@ -57,12 +67,17 @@ services:
       - "5000:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+
+      # Connessione al database condiviso SQL Server.
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CarDb;User Id=sa;Password=YourStrong@Password;TrustServerCertificate=True;
+
+      # Endpoint Kafka raggiungibile tramite DNS Docker.
       - Kafka__BootstrapServers=kafka:9092
     depends_on:
       kafka:
         condition: service_healthy
 
+  # --- EMPLOYEE SERVICE ---
   employee-service:
     image: ghcr.io/k4v4try4/employeeservice:latest
     container_name: employee-service
@@ -78,6 +93,7 @@ services:
       kafka:
         condition: service_healthy
 
+  # --- BOOKING SERVICE ---
   booking-service:
     image: ghcr.io/k4v4try4/bookingservice:latest
     container_name: booking-service
@@ -90,6 +106,8 @@ services:
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=BookingDb;User Id=sa;Password=YourStrong@Password;TrustServerCertificate=True;
       - Kafka__BootstrapServers=kafka:9092
 
+      # Comunicazione interna tra microservizi tramite
+      # il DNS fornito dalla rete Docker.
       - ExternalServices__CarServiceUrl=http://car-service:8080
       - ExternalServices__EmployeeServiceUrl=http://employee-service:8080
 
