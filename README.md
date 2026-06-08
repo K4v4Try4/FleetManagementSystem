@@ -278,6 +278,69 @@ microservizio.Shared
 
 ---
 
+## 🚀 Avvio del Progetto
+
+Tutti i comandi vanno eseguiti dalla cartella `microservices/`, che contiene il file `docker-compose. prod.yml`.
+
+### 1. Posizionarsi nella cartella
+
+```bash
+cd FleetManagementSystem/microservices
+```
+
+### 2. Avviare tutti i servizi in produzione
+
+```bash
+docker compose -f docker-compose.prod.yml up -d
+```
+
+### 3. Verificare che i container siano in esecuzione
+
+```bash
+docker compose ps
+```
+
+### 4. Visualizzare i log
+
+```bash
+# Log di tutti i servizi
+docker compose logs -f
+
+# Log di un singolo servizio
+docker compose logs -f <MICROSERVICE_NAME>
+```
+
+### 5. Fermare i servizi
+
+```bash
+# Ferma i container senza rimuoverli
+docker compose -f docker-compose.prod.yml stop
+
+# Ferma e rimuove i container (i volumi vengono mantenuti)
+docker compose -f docker-compose.prod.yml down
+
+# Ferma, rimuove container E volumi (⚠️ cancella i dati del DB)
+docker compose -f docker-compose.prod.yml down -v
+```
+
+### 6. Ricostruire le immagini dopo modifiche al codice
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
+```
+
+---
+
+### Endpoint disponibili dopo l'avvio
+
+| Servizio | URL base |
+|---|---|
+| Car Service | `http://localhost:5000/swagger/index.html` |
+| Employee Service | `http://localhost:5001/swagger/index.html` |
+| Booking Service | `http://localhost:5002/swagger/index.html` |
+
+---
+
 ## 📁 Struttura del Progetto
 
 ```
@@ -287,8 +350,6 @@ microservizio.Shared
 │       ├── 📄 docker-publish.yml
 │       └── 📄 nuget-publish.yml
 ├── 📄 README.md
-├── 📄 appunti.txt
-├── 📄 comandi_codice.txt
 ├── 📄 nuget.config
 ├── 📁 nuget-packages/
 │   ├── 📄 CarService.ClientHttp.1.0.0.nupkg
@@ -298,7 +359,6 @@ microservizio.Shared
 └── 📁 microservices/
     ├── 📄 .env
     ├── 📄 docker-compose.yml
-    │
     ├── 📁 BookingService/
     │   ├── 📄 .dockerignore
     │   ├── 📄 BookingService.slnx
@@ -350,7 +410,6 @@ microservizio.Shared
     │       │   └── 📄 BookingsController.cs
     │       └── 📁 Properties/
     │           └── 📄 launchSettings.json
-    │
     ├── 📁 CarService/
     │   ├── 📄 .dockerignore
     │   ├── 📄 CarService.slnx
@@ -401,7 +460,6 @@ microservizio.Shared
     │       │   └── 📄 CarsController.cs
     │       └── 📁 Properties/
     │           └── 📄 launchSettings.json
-    │
     └── 📁 EmployeeService/
         ├── 📄 .dockerignore
         ├── 📄 EmployeeService.slnx
